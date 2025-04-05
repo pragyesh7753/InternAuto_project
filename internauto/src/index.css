@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  font-family: 'Poppins', sans-serif;
+  --color-primary: #facc15;
+  --color-secondary: #dc2626;
+  --color-accent: #ef4444;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #facc15 0%, #dc2626 100%);
+}
+
+.btn-primary {
+  @apply px-6 py-3 text-white rounded-full font-semibold transition-all duration-300 hover:bg-red-600 hover:transform hover:scale-105 shadow-lg hover:shadow-red-500/50;
+  background-color: var(--color-accent);
+  /* Use the CSS variable directly */
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-white rounded-full font-semibold transition-all duration-300 hover:transform hover:scale-105 shadow-lg hover:shadow-white/50;
+  color: var(--color-secondary);
+  /* Use the CSS variable directly */
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  /* Apply opacity directly */
+}
+
+.flip-card {
+  @apply relative w-full h-[300px];
+  perspective: 1000px;
+  /* Apply the perspective directly */
+}
+
+.flip-card-inner {
+  @apply relative w-full h-full transition-transform duration-700;
+  transform-style: preserve-3d;
+  /* Apply the transform-style directly */
+}
+
+.flip-card:hover .flip-card-inner {
+  @apply rotate-y-180;
+}
+
+.flip-card-front,
+.flip-card-back {
+  @apply absolute w-full h-full backface-hidden;
+}
+
+.flip-card-back {
+  @apply rotate-y-180;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
