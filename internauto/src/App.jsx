@@ -1,14 +1,15 @@
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
-import { FaRocket, FaSignInAlt, FaBrain, FaLaptopCode, FaArrowRight } from 'react-icons/fa';
+import { FaRocket, FaSignInAlt, FaBrain, FaLaptopCode, FaArrowRight, FaUserCog } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useUser, SignInButton, SignUpButton } from '@clerk/clerk-react';
+import { useUser, SignInButton, SignUpButton, UserButton, useClerk } from '@clerk/clerk-react';
 import Typewriter from 'typewriter-effect';
 import toast from 'react-hot-toast';
 
 function App() {
   const { isSignedIn } = useUser();
   const navigate = useNavigate();
+  const { openUserProfile } = useClerk();
 
   const handleCardClick = (path) => {
     if (!isSignedIn) {
@@ -16,6 +17,10 @@ function App() {
       return;
     }
     navigate(path);
+  };
+
+  const handleManageAccount = () => {
+    openUserProfile();
   };
 
   return (
@@ -58,12 +63,17 @@ function App() {
                 </SignInButton>
               </>
             ) : (
-              <button
-                onClick={() => navigate('/dashboard')}
-                className="btn-primary flex items-center gap-2"
-              >
-                <FaRocket /> Go to Dashboard
-              </button>
+              <div className="flex gap-4 items-center">
+                <button
+                  onClick={handleManageAccount}
+                  className="btn-secondary flex items-center gap-2"
+                >
+                  <FaUserCog /> Manage Account
+                </button>
+                <div className="ml-2">
+                  <UserButton afterSignOutUrl="/" />
+                </div>
+              </div>
             )}
           </div>
         </motion.div>
