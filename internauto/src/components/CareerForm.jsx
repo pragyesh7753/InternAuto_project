@@ -126,6 +126,7 @@ function CarrierForm({ onClose }) {
                         <input
                             value={softSkills}
                             onChange={(e) => setSoftSkills(e.target.value)}
+                            required
                             className='outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15'
                             type="text"
                             placeholder='Communication, teamwork, etc.'
@@ -137,6 +138,7 @@ function CarrierForm({ onClose }) {
                         <input
                             value={project}
                             onChange={(e) => setProject(e.target.value)}
+                            required
                             className='outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15'
                             type="text"
                             placeholder='Notable projects you have worked on'
