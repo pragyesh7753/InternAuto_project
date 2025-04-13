@@ -10,6 +10,11 @@ import threading
 import queue
 import time
 from internshala_auto import InternshalaAutomation
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Set up logging
 logging.basicConfig(
@@ -29,6 +34,19 @@ CORS(app)
 # Store for active automation jobs and their status
 jobs = {}
 status_messages = {}
+
+# Gemini API setup
+try:
+    import google.generativeai as genai
+    gemini_api_key = os.getenv("GEMINI_API_KEY")
+    if not gemini_api_key:
+        raise ValueError("GEMINI_API_KEY not found in environment variables")
+    genai.configure(api_key=gemini_api_key)
+    model = genai.GenerativeModel('gemini-2.0-flash')
+    logger.info("Gemini API initialized successfully")
+except Exception as e:
+    logger.error(f"Failed to initialize Gemini API: {e}")
+    model = None
 
 def run_automation(job_id, email, password, headless, limit):
     """Run the automation in a separate thread"""
@@ -176,6 +194,49 @@ def health_check():
         'status': 'ok',
         'message': 'Internshala API is running'
     })
+
+@app.route('/api/career_suggestion', methods=['POST'])
+def get_career_suggestion():
+    """API endpoint to get career suggestion from Gemini API"""
+    if not model:
+        return jsonify({
+            'success': False,
+            'message': 'Gemini API not initialized'
+        }), 500
+
+    data = request.json
+    goal = data.get('goal', '')
+    education = data.get('education', '')
+    technicalSkills = data.get('technicalSkills', '')
+    softSkills = data.get('softSkills', '')
+    project = data.get('project', '')
+
+    prompt = f"""
+    I want to achieve {goal}.
+    I have completed {education}.
+    My technical skills are: {technicalSkills}.
+    My soft skills are: {softSkills}.
+    I have worked on the following projects: {project}.
+
+    What additional steps can I take to achieve my goal?
+    Provide specific suggestions for improving my skills, gaining relevant experience, and networking.
+    Provide the suggestions in a bullet point format.
+    Make sure to include any relevant certifications or courses that would be beneficial.
+    """
+
+    try:
+        response = model.generate_content(prompt)
+        suggestion = response.text
+        return jsonify({
+            'success': True,
+            'suggestion': suggestion
+        })
+    except Exception as e:
+        logger.error(f"Error generating career suggestion: {e}")
+        return jsonify({
+            'success': False,
+            'message': str(e)
+        }), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

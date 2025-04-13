@@ -5516,3 +5516,45 @@ Stacktrace:
 2025-04-13 15:53:32,687 - INFO - 127.0.0.1 - - [13/Apr/2025 15:53:32] "GET /api/status/b13c2870-03b2-463e-8d42-e0d67b66b75b HTTP/1.1" 200 -
 2025-04-13 15:53:35,007 - INFO - 127.0.0.1 - - [13/Apr/2025 15:53:35] "GET /api/status/b13c2870-03b2-463e-8d42-e0d67b66b75b HTTP/1.1" 200 -
 2025-04-13 15:53:36,693 - INFO - 127.0.0.1 - - [13/Apr/2025 15:53:36] "GET /api/status/b13c2870-03b2-463e-8d42-e0d67b66b75b HTTP/1.1" 200 -
+2025-04-13 19:33:29,944 - INFO - Gemini API initialized successfully
+2025-04-13 19:33:29,954 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-13 19:33:29,954 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-13 19:33:29,984 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.71:5000
+2025-04-13 19:33:29,985 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 19:34:08,011 - INFO - Gemini API initialized successfully
+2025-04-13 19:34:08,027 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-13 19:34:08,028 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-13 19:34:08,080 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.71:5000
+2025-04-13 19:34:08,088 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 19:35:03,540 - INFO - 127.0.0.1 - - [13/Apr/2025 19:35:03] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:35:05,879 - ERROR - Error generating career suggestion: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-04-13 19:35:05,881 - INFO - 127.0.0.1 - - [13/Apr/2025 19:35:05] "[35m[1mPOST /api/career_suggestion HTTP/1.1[0m" 500 -
+2025-04-13 19:35:55,118 - INFO - 127.0.0.1 - - [13/Apr/2025 19:35:55] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:35:55,928 - ERROR - Error generating career suggestion: 404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+2025-04-13 19:35:55,929 - INFO - 127.0.0.1 - - [13/Apr/2025 19:35:55] "[35m[1mPOST /api/career_suggestion HTTP/1.1[0m" 500 -
+2025-04-13 19:36:09,970 - INFO - Gemini API initialized successfully
+2025-04-13 19:36:09,978 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-13 19:36:09,979 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-13 19:36:10,001 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.71:5000
+2025-04-13 19:36:10,003 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-13 19:36:43,448 - INFO - 127.0.0.1 - - [13/Apr/2025 19:36:43] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:36:57,469 - INFO - 127.0.0.1 - - [13/Apr/2025 19:36:57] "POST /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:38:05,339 - INFO - 127.0.0.1 - - [13/Apr/2025 19:38:05] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:38:18,712 - INFO - 127.0.0.1 - - [13/Apr/2025 19:38:18] "POST /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:40:21,112 - INFO - 127.0.0.1 - - [13/Apr/2025 19:40:21] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:40:33,520 - INFO - 127.0.0.1 - - [13/Apr/2025 19:40:33] "POST /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:41:26,075 - INFO - 127.0.0.1 - - [13/Apr/2025 19:41:26] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 19:41:40,279 - INFO - 127.0.0.1 - - [13/Apr/2025 19:41:40] "POST /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 20:04:32,487 - INFO - 127.0.0.1 - - [13/Apr/2025 20:04:32] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 20:04:48,953 - INFO - 127.0.0.1 - - [13/Apr/2025 20:04:48] "POST /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 20:09:17,675 - INFO - 127.0.0.1 - - [13/Apr/2025 20:09:17] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
+2025-04-13 20:09:33,382 - INFO - 127.0.0.1 - - [13/Apr/2025 20:09:33] "POST /api/career_suggestion HTTP/1.1" 200 -
