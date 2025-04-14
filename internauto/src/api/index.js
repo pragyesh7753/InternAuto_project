@@ -50,6 +50,64 @@ export const InternshalaAPI = {
     },
     
     /**
+     * Generate a resume based on user input
+     * @param {Object} resumeData - User's resume information
+     * @returns {Promise<Object>} Response with generated resume
+     */
+    generateResume: async (resumeData) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/generate_resume`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(resumeData),
+            });
+            
+            return await response.json();
+        } catch (error) {
+            console.error('API Error:', error);
+            throw error;
+        }
+    },
+    
+    /**
+     * Download a resume as PDF
+     * @param {string} resumeId - The ID of the resume to download
+     * @returns {Promise<Blob>} PDF blob
+     */
+    downloadResumePdf: async (resumeId) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/download_resume/${resumeId}/pdf`, {
+                method: 'GET',
+            });
+            
+            return await response.blob();
+        } catch (error) {
+            console.error('API Error:', error);
+            throw error;
+        }
+    },
+    
+    /**
+     * Download a resume as DOCX
+     * @param {string} resumeId - The ID of the resume to download
+     * @returns {Promise<Blob>} DOCX blob
+     */
+    downloadResumeDocx: async (resumeId) => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/download_resume/${resumeId}/docx`, {
+                method: 'GET',
+            });
+            
+            return await response.blob();
+        } catch (error) {
+            console.error('API Error:', error);
+            throw error;
+        }
+    },
+    
+    /**
      * Check if the API server is running
      * @returns {Promise<boolean>} True if server is running
      */
