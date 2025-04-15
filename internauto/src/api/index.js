@@ -53,22 +53,12 @@ export const InternshalaAPI = {
      * Generate a resume based on user input
      * @param {Object} resumeData - User's resume information
      * @returns {Promise<Object>} Response with generated resume
+     * 
+     * Note: This function is no longer used as resume generation is done on the frontend
      */
     generateResume: async (resumeData) => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/generate_resume`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(resumeData),
-            });
-            
-            return await response.json();
-        } catch (error) {
-            console.error('API Error:', error);
-            throw error;
-        }
+        console.warn('This method is deprecated, resume generation now happens on frontend');
+        return { success: true, message: 'Resume generation now happens on frontend' };
     },
     
     /**
@@ -77,16 +67,8 @@ export const InternshalaAPI = {
      * @returns {Promise<Blob>} PDF blob
      */
     downloadResumePdf: async (resumeId) => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/download_resume/${resumeId}/pdf`, {
-                method: 'GET',
-            });
-            
-            return await response.blob();
-        } catch (error) {
-            console.error('API Error:', error);
-            throw error;
-        }
+        console.warn('This method is deprecated, PDF generation now happens on frontend');
+        return new Blob([''], { type: 'application/pdf' });
     },
     
     /**
@@ -95,16 +77,8 @@ export const InternshalaAPI = {
      * @returns {Promise<Blob>} DOCX blob
      */
     downloadResumeDocx: async (resumeId) => {
-        try {
-            const response = await fetch(`${API_BASE_URL}/download_resume/${resumeId}/docx`, {
-                method: 'GET',
-            });
-            
-            return await response.blob();
-        } catch (error) {
-            console.error('API Error:', error);
-            throw error;
-        }
+        console.warn('This method is deprecated, DOCX generation now happens on frontend');
+        return new Blob([''], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
     },
     
     /**

@@ -3,7 +3,7 @@ API interface for Internshala Automation.
 Provides endpoints to run the automation from a frontend application.
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import logging
 import threading
@@ -12,6 +12,8 @@ import time
 from internshala_auto import InternshalaAutomation
 import os
 from dotenv import load_dotenv
+import io
+import re
 
 # Load environment variables
 load_dotenv()

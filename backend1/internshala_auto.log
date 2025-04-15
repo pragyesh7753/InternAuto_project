@@ -5945,3 +5945,49 @@ Stacktrace:
 2025-04-14 01:12:11,017 - INFO - 127.0.0.1 - - [14/Apr/2025 01:12:11] "GET /api/status/d79c689f-c702-47a1-9fcd-fd267f058f33 HTTP/1.1" 200 -
 2025-04-14 01:20:34,504 - INFO - 127.0.0.1 - - [14/Apr/2025 01:20:34] "OPTIONS /api/career_suggestion HTTP/1.1" 200 -
 2025-04-14 01:20:45,386 - INFO - 127.0.0.1 - - [14/Apr/2025 01:20:45] "POST /api/career_suggestion HTTP/1.1" 200 -
+2025-04-14 22:33:49,693 - INFO - Gemini API initialized successfully
+2025-04-14 22:33:49,705 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-14 22:33:49,706 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-14 22:33:49,749 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.156:5000
+2025-04-14 22:33:49,754 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-14 23:00:03,269 - INFO - 127.0.0.1 - - [14/Apr/2025 23:00:03] "OPTIONS /api/generate_resume HTTP/1.1" 200 -
+2025-04-14 23:00:09,212 - INFO - 127.0.0.1 - - [14/Apr/2025 23:00:09] "POST /api/generate_resume HTTP/1.1" 200 -
+2025-04-14 23:01:25,859 - ERROR - Error generating PDF: 'latin-1' codec can't encode character '\u2022' in position 211: ordinal not in range(256)
+2025-04-14 23:01:25,860 - INFO - 127.0.0.1 - - [14/Apr/2025 23:01:25] "[35m[1mGET /api/download_resume/77f8369b-38ff-4a1a-89ec-a1a9a7484ab9/pdf HTTP/1.1[0m" 500 -
+2025-04-14 23:16:33,905 - INFO - 127.0.0.1 - - [14/Apr/2025 23:16:33] "OPTIONS /api/generate_resume HTTP/1.1" 200 -
+2025-04-14 23:16:37,971 - INFO - 127.0.0.1 - - [14/Apr/2025 23:16:37] "POST /api/generate_resume HTTP/1.1" 200 -
+2025-04-14 23:16:42,050 - INFO - 127.0.0.1 - - [14/Apr/2025 23:16:42] "GET /api/download_resume/15a0110d-cae5-4b0c-96e1-81975182951c/docx HTTP/1.1" 200 -
+2025-04-14 23:52:30,890 - INFO - 127.0.0.1 - - [14/Apr/2025 23:52:30] "OPTIONS /api/generate_resume HTTP/1.1" 200 -
+2025-04-14 23:52:34,840 - INFO - 127.0.0.1 - - [14/Apr/2025 23:52:34] "POST /api/generate_resume HTTP/1.1" 200 -
+2025-04-14 23:53:00,665 - INFO - 127.0.0.1 - - [14/Apr/2025 23:53:00] "GET /api/download_resume/3fe7db70-7c75-48b1-9c8b-44209d2d97af/docx HTTP/1.1" 200 -
+2025-04-15 12:22:13,892 - INFO - Gemini API initialized successfully
+2025-04-15 12:22:13,901 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-15 12:22:13,902 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-15 12:22:13,981 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.99.28:5000
+2025-04-15 12:22:13,982 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 12:22:48,606 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:48] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-15 12:22:48,879 - INFO - Running in headless mode
+2025-04-15 12:22:48,880 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:48] "POST /api/run HTTP/1.1" 200 -
+2025-04-15 12:22:48,881 - INFO - Proactively clearing ChromeDriver cache at C:\Users\sprag\appdata\roaming\undetected_chromedriver
+2025-04-15 12:22:48,890 - INFO - Detected Chrome version: 135.0.7049.85
+2025-04-15 12:22:48,894 - INFO - Using Chrome major version: 135
+2025-04-15 12:22:48,898 - INFO - Initializing Chrome driver with explicit version: 135
+2025-04-15 12:22:49,105 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:49] "OPTIONS /api/status/d341700f-a650-42cf-bbf0-02f1f714ae03 HTTP/1.1" 200 -
+2025-04-15 12:22:49,235 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:49] "GET /api/status/d341700f-a650-42cf-bbf0-02f1f714ae03 HTTP/1.1" 200 -
+2025-04-15 12:22:50,920 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:50] "OPTIONS /api/status/d341700f-a650-42cf-bbf0-02f1f714ae03 HTTP/1.1" 200 -
+2025-04-15 12:22:50,929 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:50] "GET /api/status/d341700f-a650-42cf-bbf0-02f1f714ae03 HTTP/1.1" 200 -
+2025-04-15 12:22:53,234 - INFO - 127.0.0.1 - - [15/Apr/2025 12:22:53] "GET /api/status/d341700f-a650-42cf-bbf0-02f1f714ae03 HTTP/1.1" 200 -
+2025-04-15 12:23:11,764 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-15 12:23:16,823 - INFO - Chrome driver initialized successfully
+2025-04-15 12:23:16,827 - INFO - Navigating to Internshala login page
+2025-04-15 12:23:54,460 - ERROR - Still on login page after submission - credentials likely incorrect
+2025-04-15 12:23:54,461 - ERROR - Login failed, cannot proceed
+2025-04-15 12:23:55,162 - INFO - Browser session closed
+2025-04-15 12:26:07,674 - INFO - 127.0.0.1 - - [15/Apr/2025 12:26:07] "[33mGET /api HTTP/1.1[0m" 404 -
+2025-04-15 12:34:16,358 - INFO - 127.0.0.1 - - [15/Apr/2025 12:34:16] "[31m[1mGET /api/run HTTP/1.1[0m" 405 -

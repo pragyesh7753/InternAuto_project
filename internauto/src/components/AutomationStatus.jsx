@@ -14,6 +14,11 @@ const AutomationStatus = ({ jobId, onBack }) => {
     };
 
     useEffect(() => {
+        if (!jobId) {
+            setError("No job ID provided");
+            return;
+        }
+        
         // Check status immediately then poll every 2 seconds
         checkStatus();
         const intervalId = setInterval(checkStatus, 2000);
@@ -27,11 +32,13 @@ const AutomationStatus = ({ jobId, onBack }) => {
     }, [messages]);
 
     const checkStatus = async () => {
+        if (!jobId) return;
+        
         try {
             const data = await InternshalaAPI.checkStatus(jobId);
             
             if (data.success) {
-                setStatus(data.status);
+                setStatus(data.status || 'running');
                 
                 // Add new messages to the list (avoid duplicates)
                 if (data.messages && data.messages.length > 0) {
@@ -76,12 +83,11 @@ const AutomationStatus = ({ jobId, onBack }) => {
                     }
                 }
             } else {
-                setError('Failed to get status. Please try again later.');
+                setError(data.message || 'Failed to get status. Please try again later.');
             }
         } catch (error) {
             console.error('Error fetching status:', error);
             setError('Failed to connect to the server. Please try again later.');
-            toast.error('Connection error');
         }
     };
 
@@ -125,38 +131,38 @@ const AutomationStatus = ({ jobId, onBack }) => {
     };
 
     return (
-        <div className='bg-gradient-to-br from-yellow-400/95 to-red-600/95 backdrop-blur-lg rounded-xl p-8 w-[600px] max-w-[95vw] relative shadow-2xl border border-white/20'>
+        <div className='bg-gradient-to-br from-yellow-400/95 to-red-600/95 backdrop-blur-lg rounded-xl p-4 sm:p-8 w-[95%] max-w-[600px] relative shadow-2xl border border-white/20'>
             <button
                 onClick={onBack}
-                className="absolute top-4 left-4 text-white/80 hover:text-white flex items-center gap-2 transition-colors"
+                className="absolute top-3 sm:top-4 left-3 sm:left-4 text-white/80 hover:text-white flex items-center gap-1 sm:gap-2 transition-colors text-sm sm:text-base"
             >
                 <FaArrowLeft /> Back
             </button>
             
-            <h2 className='text-2xl font-bold text-white mb-6 text-center'>Automation Status</h2>
+            <h2 className='text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center mt-10 sm:mt-0'>Automation Status</h2>
             
-            <div className="flex items-center gap-3 bg-black/20 p-4 rounded-lg mb-4">
-                <div className="text-2xl">
+            <div className="flex items-center gap-2 sm:gap-3 bg-black/20 p-3 sm:p-4 rounded-lg mb-4">
+                <div className="text-xl sm:text-2xl">
                     {getStatusIndicator()}
                 </div>
                 <div>
-                    <div className="text-white font-semibold">Status: {getStatusText()}</div>
-                    <div className="text-white/70 text-sm">Job ID: {jobId}</div>
+                    <div className="text-white font-semibold text-sm sm:text-base">Status: {getStatusText()}</div>
+                    <div className="text-white/70 text-xs sm:text-sm">Job ID: {jobId}</div>
                 </div>
             </div>
             
             {error && (
-                <div className="bg-red-500/30 border border-red-500 text-white p-4 rounded-lg mb-4">
+                <div className="bg-red-500/30 border border-red-500 text-white p-3 sm:p-4 rounded-lg mb-4 text-sm">
                     {error}
                 </div>
             )}
             
-            <div className="bg-black/40 rounded-lg p-4 h-[300px] overflow-auto mb-4">
-                <h3 className="text-white/90 font-semibold mb-2">Progress Log:</h3>
+            <div className="bg-black/40 rounded-lg p-3 sm:p-4 h-[250px] sm:h-[300px] overflow-auto mb-4">
+                <h3 className="text-white/90 font-semibold mb-2 text-sm sm:text-base">Progress Log:</h3>
                 {messages.length === 0 ? (
-                    <p className="text-white/50 italic">Waiting for messages...</p>
+                    <p className="text-white/50 italic text-xs sm:text-sm">Waiting for messages...</p>
                 ) : (
-                    <div className="space-y-1 font-mono text-sm">
+                    <div className="space-y-1 font-mono text-xs sm:text-sm">
                         {messages.map((msg, idx) => (
                             <div key={idx} className={`${getMessageClassName(msg.level)}`}>
                                 <span className="text-gray-400">[{msg.timestamp}]</span> {msg.message}
@@ -169,7 +175,7 @@ const AutomationStatus = ({ jobId, onBack }) => {
             
             <button
                 onClick={onBack}
-                className="w-full bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg transition-colors"
+                className="w-full bg-white/10 hover:bg-white/20 text-white py-2 rounded-lg transition-colors text-sm sm:text-base"
             >
                 Return to Form
             </button>

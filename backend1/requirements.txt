@@ -6,3 +6,5 @@ flask>=2.0.0
 flask-cors>=3.0.10
 google-generativeai
 # Remove incorrect logging package - it's part of Python's standard library
+fpdf>=1.7.2
+python-docx>=0.8.11

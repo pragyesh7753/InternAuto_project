@@ -18,8 +18,22 @@ export default function InternshalaForm() {
     const submitHandler = async (e) => {
         e.preventDefault();
         
-        if (!email || !password || !numberOfInternships) {
+        if (!email.trim() || !password.trim() || !numberOfInternships) {
             toast.error('Please fill all required fields');
+            return;
+        }
+        
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            toast.error('Please enter a valid email address');
+            return;
+        }
+        
+        // Validate number of internships
+        const internshipCount = parseInt(numberOfInternships, 10);
+        if (isNaN(internshipCount) || internshipCount < 1 || internshipCount > 15) {
+            toast.error('Number of internships must be between 1 and 15');
             return;
         }
         
@@ -30,7 +44,7 @@ export default function InternshalaForm() {
                 email: email,
                 password: password,
                 headless: isHeadless,
-                limit: parseInt(numberOfInternships, 10)
+                limit: internshipCount
             });
             
             if (data.success) {
@@ -38,7 +52,7 @@ export default function InternshalaForm() {
                 setShowStatus(true);
                 toast.success('Automation started successfully');
             } else {
-                toast.error(`Failed to start automation: ${data.message}`);
+                toast.error(`Failed to start automation: ${data.message || 'Unknown error'}`);
             }
         } catch (error) {
             console.error('Error starting automation:', error);
@@ -58,26 +72,26 @@ export default function InternshalaForm() {
     }
 
     return (
-        <div className='bg-gradient-to-br from-yellow-400/95 to-red-600/95 backdrop-blur-lg rounded-xl p-8 w-[400px] max-w-[95vw] relative shadow-2xl border border-white/20'>
+        <div className='bg-gradient-to-br from-yellow-400/95 to-red-600/95 backdrop-blur-lg rounded-xl p-5 sm:p-8 w-[95%] max-w-[400px] relative shadow-2xl border border-white/20'>
             <button
                 onClick={handleClose}
                 className="absolute top-4 right-4 text-white/80 hover:text-white text-2xl transition-colors"
             >
                 ×
             </button>
-            <h2 className='text-2xl font-bold text-white mb-6 text-center'>Enter Your InternShala Credentials</h2>
+            <h2 className='text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 text-center'>Enter Your InternShala Credentials</h2>
             
-            <div className='bg-white/10 p-3 rounded-lg mb-4 text-white/80 text-sm flex gap-2'>
+            <div className='bg-white/10 p-3 rounded-lg mb-4 text-white/80 text-xs sm:text-sm flex gap-2'>
                 <FaInfoCircle className='text-white mt-1 flex-shrink-0' />
                 <p>Your credentials are used only for automation. Please ensure you enter correct Internshala login details, as incorrect credentials will cause the automation to fail.</p>
             </div>
             
-            <form onSubmit={submitHandler} className='flex flex-col gap-4'>
+            <form onSubmit={submitHandler} className='flex flex-col gap-3 sm:gap-4'>
                 <input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className='outline-none bg-white/10 border border-white/30 text-white text-lg py-3 px-4 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all'
+                    className='outline-none bg-white/10 border border-white/30 text-white text-base sm:text-lg py-2 sm:py-3 px-3 sm:px-4 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all'
                     type="email"
                     placeholder='Enter Your Email'
                 />
@@ -85,7 +99,7 @@ export default function InternshalaForm() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className='outline-none bg-white/10 border border-white/30 text-white text-lg py-3 px-4 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all'
+                    className='outline-none bg-white/10 border border-white/30 text-white text-base sm:text-lg py-2 sm:py-3 px-3 sm:px-4 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all'
                     type="password"
                     placeholder='Enter Your Password'
                 />
@@ -96,7 +110,7 @@ export default function InternshalaForm() {
                     required
                     min="1"
                     max="15"
-                    className='outline-none bg-white/10 border border-white/30 text-white text-lg py-3 px-4 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all'
+                    className='outline-none bg-white/10 border border-white/30 text-white text-base sm:text-lg py-2 sm:py-3 px-3 sm:px-4 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all'
                     type="number"
                     placeholder='Enter the Number Of Internships'
                 />
@@ -109,13 +123,13 @@ export default function InternshalaForm() {
                         onChange={(e) => setIsHeadless(e.target.checked)}
                         className="w-4 h-4"
                     />
-                    <label htmlFor="headlessMode" className="cursor-pointer">
+                    <label htmlFor="headlessMode" className="cursor-pointer text-sm sm:text-base">
                         Run in headless mode (browser will be invisible)
                     </label>
                 </div>
                 
                 <button 
-                    className='mt-4 bg-white text-red-500 hover:bg-white/90 text-lg py-3 px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-white/25 flex justify-center items-center'
+                    className='mt-2 sm:mt-4 bg-white text-red-500 hover:bg-white/90 text-base sm:text-lg py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-white/25 flex justify-center items-center'
                     disabled={isLoading}
                 >
                     {isLoading ? (
