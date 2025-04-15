@@ -3,6 +3,8 @@ Run the API server for Internshala Automation.
 This provides the interface for frontend applications to control the automation.
 """
 
+from flask import Flask
+from flask_cors import CORS
 from api import app
 import argparse
 import logging
@@ -17,6 +19,9 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+# Enable CORS for the Flask app
+CORS(app, origins=["https://internauto.pragyesh.tech"])
 
 if __name__ == "__main__":
     # Set up argument parser

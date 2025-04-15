@@ -2,7 +2,7 @@
  * API client for the Internshala automation backend
  */
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://internauto-project.onrender.com/api';
 
 export const InternshalaAPI = {
     /**
