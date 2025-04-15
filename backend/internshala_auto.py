@@ -26,155 +26,52 @@ class InternshalaAutomation:
     Handles browser interaction, login, finding suitable internships,
     and submitting applications automatically.
     """
-    def __init__(self, email, password, headless=False):
+    def __init__(self, email, password, limit=5, headless=True):
         """
         Initialize the automation with user credentials and browser preferences.
         
         Args:
             email (str): User's Internshala email
             password (str): User's Internshala password
+            limit (int): Maximum number of applications to submit
             headless (bool): Whether to run browser in headless mode
         """
         self.email = email
         self.password = password
+        self.limit = limit
         self.preferences = None  # Will be populated from Internshala profile
         self.headless = headless
-        self.setup_driver()
         
-    def setup_driver(self):
-        """Set up Chrome driver with specific configurations to avoid detection"""
-        # Get Chrome version for auto-detection
-        chrome_version = self._get_chrome_version()
-        logger.info(f"Detected Chrome version: {chrome_version}")
+        # Initialize Chrome options with proper binary path handling
+        self.chrome_options = uc.ChromeOptions()
         
-        # Extract major version number for version_main parameter
-        major_version = self._extract_major_version(chrome_version)
+        # Add standard options
+        if headless:
+            self.chrome_options.add_argument('--headless')
+            self.chrome_options.add_argument('--disable-gpu')
         
-        # Clear the ChromeDriver cache first
-        self._clear_chrome_cache()
+        # Add common options for stability
+        self.chrome_options.add_argument('--no-sandbox')
+        self.chrome_options.add_argument('--disable-dev-shm-usage')
+        self.chrome_options.add_argument('--disable-extensions')
+        self.chrome_options.add_argument('--disable-notifications')
+        self.chrome_options.add_argument('--start-maximized')
         
-        # Define a function to create fresh options
-        def create_options():
-            options = uc.ChromeOptions()
-            options.add_argument("--disable-blink-features=AutomationControlled")
-            options.add_argument("--disable-extensions")
-            options.add_argument("--no-sandbox")
-            options.add_argument("--disable-infobars")
-            options.add_argument("--disable-dev-shm-usage")
-            options.add_argument("--window-size=1920,1080")
-            
-            # Set headless mode only if specified (default is non-headless)
-            if self.headless:
-                options.add_argument("--headless")
-                logger.info("Running in headless mode")
-            else:
-                logger.info("Running with browser GUI visible")
-            
-            # Randomize user agent to avoid detection
-            user_agents = [
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
-            ]
-            options.add_argument(f"--user-agent={random.choice(user_agents)}")
-            return options
+        # Handle binary location safely
+        # Use environment variable if available, otherwise don't set binary location
+        chrome_binary = os.environ.get('CHROME_BINARY_PATH')
+        if chrome_binary:
+            self.chrome_options.binary_location = chrome_binary
         
+        # Initialize WebDriver with service object to handle path issues
         try:
-            # Initialize driver with appropriate parameters - using fresh options
-            logger.info("Attempting to initialize Chrome driver with version parameter")
-            options = create_options()
-            self._initialize_driver(options, major_version)
+            self.driver = uc.Chrome(options=self.chrome_options)
+            logger.info("WebDriver initialized successfully")
         except Exception as e:
-            logger.error(f"Error initializing Chrome driver: {str(e)}")
-            # Last resort approach - try with driver_executable_path=None
-            try:
-                logger.info("Attempting final fallback initialization with custom params")
-                # Create fresh options for this attempt
-                options = create_options()
-                self.driver = uc.Chrome(
-                    options=options,
-                    use_subprocess=True,
-                    driver_executable_path=None,
-                    browser_executable_path=self._find_chrome_executable()
-                )
-                self._hide_automation_flags()
-            except Exception as e2:
-                logger.critical(f"All attempts to initialize Chrome driver failed: {str(e2)}")
-                raise
-
-    def _clear_chrome_cache(self):
-        """Clear the ChromeDriver cache to avoid issues with cached versions"""
-        cache_path = os.path.join(os.path.expanduser('~'), 'appdata', 'roaming', 'undetected_chromedriver')
-        if os.path.exists(cache_path):
-            import shutil
-            logger.info(f"Proactively clearing ChromeDriver cache at {cache_path}")
-            shutil.rmtree(cache_path, ignore_errors=True)
-
-    def _initialize_driver(self, options, major_version):
-        """Initialize the Chrome driver with the appropriate version parameter"""
-        try:
-            if major_version:
-                logger.info(f"Initializing Chrome driver with explicit version: {major_version}")
-                self.driver = uc.Chrome(options=options, version_main=major_version, use_subprocess=True)
-            else:
-                # Fallback to default behavior
-                logger.info("Initializing Chrome driver with default version detection")
-                self.driver = uc.Chrome(options=options, use_subprocess=True)
+            error_msg = f"Failed to initialize WebDriver: {str(e)}"
+            logger.error(error_msg)
+            raise Exception(error_msg)
             
-            self._hide_automation_flags()
-            logger.info("Chrome driver initialized successfully")
-        except Exception as e:
-            logger.error(f"Error in _initialize_driver: {str(e)}")
-            raise
-        
-    def _hide_automation_flags(self):
-        """Hide browser automation flags to avoid detection"""
-        self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-            
-    def _extract_major_version(self, chrome_version):
-        """Extract major version number from Chrome version string"""
-        major_version = None
-        if chrome_version != "Unknown":
-            try:
-                major_version = int(chrome_version.split('.')[0])
-                logger.info(f"Using Chrome major version: {major_version}")
-            except (ValueError, IndexError):
-                logger.warning("Could not parse Chrome major version")
-        return major_version
-        
-    def _get_chrome_version(self):
-        """Get the version of installed Chrome browser"""
-        try:
-            import winreg
-            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Google\Chrome\BLBeacon")
-            version, _ = winreg.QueryValueEx(key, "version")
-            return version
-        except Exception as e:
-            logger.error(f"Failed to get Chrome version: {e}")
-            return "Unknown"
-            
-    def _find_chrome_executable(self):
-        """Find the Chrome executable path"""
-        import platform
-        if platform.system() == "Windows":
-            import winreg
-            try:
-                # Try to get from registry
-                key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe")
-                chrome_path, _ = winreg.QueryValueEx(key, None)
-                return chrome_path
-            except Exception:
-                # Fallback to common locations
-                paths = [
-                    os.path.join(os.environ.get('PROGRAMFILES', 'C:\\Program Files'), 'Google\\Chrome\\Application\\chrome.exe'),
-                    os.path.join(os.environ.get('PROGRAMFILES(X86)', 'C:\\Program Files (x86)'), 'Google\\Chrome\\Application\\chrome.exe'),
-                    os.path.join(os.environ.get('LOCALAPPDATA', ''), 'Google\\Chrome\\Application\\chrome.exe')
-                ]
-                for path in paths:
-                    if os.path.exists(path):
-                        return path
-        return None
-        
     def random_delay(self, min_seconds=1, max_seconds=4):
         """Add random delay between actions to mimic human behavior"""
         delay = random.uniform(min_seconds, max_seconds)
