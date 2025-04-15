@@ -43,32 +43,6 @@ class InternshalaAutomation:
         
     def setup_driver(self):
         """Set up Chrome driver with specific configurations to avoid detection"""
-        options = uc.ChromeOptions()
-        options.add_argument("--disable-blink-features=AutomationControlled")
-        options.add_argument("--disable-extensions")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-infobars")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--window-size=1920,1080")
-        
-        # Set headless mode only if specified (default is non-headless)
-        if self.headless:
-            options.add_argument("--headless")
-            logger.info("Running in headless mode")
-        else:
-            logger.info("Running with browser GUI visible")
-        
-        # Randomize user agent to avoid detection
-        user_agents = [
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
-        ]
-        options.add_argument(f"--user-agent={random.choice(user_agents)}")
-        
-        # Clear the ChromeDriver cache first
-        self._clear_chrome_cache()
-        
         # Get Chrome version for auto-detection
         chrome_version = self._get_chrome_version()
         logger.info(f"Detected Chrome version: {chrome_version}")
@@ -76,14 +50,47 @@ class InternshalaAutomation:
         # Extract major version number for version_main parameter
         major_version = self._extract_major_version(chrome_version)
         
+        # Clear the ChromeDriver cache first
+        self._clear_chrome_cache()
+        
+        # Define a function to create fresh options
+        def create_options():
+            options = uc.ChromeOptions()
+            options.add_argument("--disable-blink-features=AutomationControlled")
+            options.add_argument("--disable-extensions")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-infobars")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--window-size=1920,1080")
+            
+            # Set headless mode only if specified (default is non-headless)
+            if self.headless:
+                options.add_argument("--headless")
+                logger.info("Running in headless mode")
+            else:
+                logger.info("Running with browser GUI visible")
+            
+            # Randomize user agent to avoid detection
+            user_agents = [
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0"
+            ]
+            options.add_argument(f"--user-agent={random.choice(user_agents)}")
+            return options
+        
         try:
-            # Initialize driver with appropriate parameters
+            # Initialize driver with appropriate parameters - using fresh options
+            logger.info("Attempting to initialize Chrome driver with version parameter")
+            options = create_options()
             self._initialize_driver(options, major_version)
         except Exception as e:
             logger.error(f"Error initializing Chrome driver: {str(e)}")
             # Last resort approach - try with driver_executable_path=None
             try:
                 logger.info("Attempting final fallback initialization with custom params")
+                # Create fresh options for this attempt
+                options = create_options()
                 self.driver = uc.Chrome(
                     options=options,
                     use_subprocess=True,
@@ -105,16 +112,20 @@ class InternshalaAutomation:
 
     def _initialize_driver(self, options, major_version):
         """Initialize the Chrome driver with the appropriate version parameter"""
-        if major_version:
-            logger.info(f"Initializing Chrome driver with explicit version: {major_version}")
-            self.driver = uc.Chrome(options=options, version_main=major_version, use_subprocess=True)
-        else:
-            # Fallback to default behavior
-            logger.info("Initializing Chrome driver with default version detection")
-            self.driver = uc.Chrome(options=options, use_subprocess=True)
-        
-        self._hide_automation_flags()
-        logger.info("Chrome driver initialized successfully")
+        try:
+            if major_version:
+                logger.info(f"Initializing Chrome driver with explicit version: {major_version}")
+                self.driver = uc.Chrome(options=options, version_main=major_version, use_subprocess=True)
+            else:
+                # Fallback to default behavior
+                logger.info("Initializing Chrome driver with default version detection")
+                self.driver = uc.Chrome(options=options, use_subprocess=True)
+            
+            self._hide_automation_flags()
+            logger.info("Chrome driver initialized successfully")
+        except Exception as e:
+            logger.error(f"Error in _initialize_driver: {str(e)}")
+            raise
         
     def _hide_automation_flags(self):
         """Hide browser automation flags to avoid detection"""
