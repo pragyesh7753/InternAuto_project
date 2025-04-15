@@ -2,7 +2,7 @@
  * API client for the Internshala automation backend
  */
 
-const API_BASE_URL = 'https://internauto-project.onrender.com/api';
+const API_BASE_URL = 'https://internauto-project.onrender.com/api/run' || "https://internauto-project.onrender.com/api/status/<job_id>" || "https://internauto-project.onrender.com/api/health" || "https://internauto-project.onrender.com/api/career_suggestion";
 
 export const InternshalaAPI = {
     /**
@@ -23,14 +23,14 @@ export const InternshalaAPI = {
                 },
                 body: JSON.stringify(params),
             });
-            
+
             return await response.json();
         } catch (error) {
             console.error('API Error:', error);
             throw error;
         }
     },
-    
+
     /**
      * Check automation job status
      * @param {string} jobId - The job ID to check
@@ -41,14 +41,14 @@ export const InternshalaAPI = {
             const response = await fetch(`${API_BASE_URL}/status/${jobId}`, {
                 method: 'GET',
             });
-            
+
             return await response.json();
         } catch (error) {
             console.error('API Error:', error);
             throw error;
         }
     },
-    
+
     /**
      * Generate a resume based on user input
      * @param {Object} resumeData - User's resume information
@@ -60,7 +60,7 @@ export const InternshalaAPI = {
         console.warn('This method is deprecated, resume generation now happens on frontend');
         return { success: true, message: 'Resume generation now happens on frontend' };
     },
-    
+
     /**
      * Download a resume as PDF
      * @param {string} resumeId - The ID of the resume to download
@@ -70,7 +70,7 @@ export const InternshalaAPI = {
         console.warn('This method is deprecated, PDF generation now happens on frontend');
         return new Blob([''], { type: 'application/pdf' });
     },
-    
+
     /**
      * Download a resume as DOCX
      * @param {string} resumeId - The ID of the resume to download
@@ -80,7 +80,7 @@ export const InternshalaAPI = {
         console.warn('This method is deprecated, DOCX generation now happens on frontend');
         return new Blob([''], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
     },
-    
+
     /**
      * Check if the API server is running
      * @returns {Promise<boolean>} True if server is running
@@ -90,7 +90,7 @@ export const InternshalaAPI = {
             const response = await fetch(`${API_BASE_URL}/health`, {
                 method: 'GET',
             });
-            
+
             const data = await response.json();
             return data.status === 'ok';
         } catch (error) {
