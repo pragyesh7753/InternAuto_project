@@ -17,7 +17,7 @@ function CareerForm({ onClose }) {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/career_suggestion', {
+            const response = await fetch('https://internauto-backend.onrender.com/api/career_suggestion', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ function CareerForm({ onClose }) {
             <div className="text-center mb-4 sm:mb-6">
                 <div className="inline-block p-2 rounded-full bg-white/20 mb-2 sm:mb-3">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                 </div>
                 <h2 className="text-xl sm:text-2xl font-bold text-white">Career Guidance</h2>

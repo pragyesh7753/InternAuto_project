@@ -5991,3 +5991,326 @@ Stacktrace:
 2025-04-15 12:23:55,162 - INFO - Browser session closed
 2025-04-15 12:26:07,674 - INFO - 127.0.0.1 - - [15/Apr/2025 12:26:07] "[33mGET /api HTTP/1.1[0m" 404 -
 2025-04-15 12:34:16,358 - INFO - 127.0.0.1 - - [15/Apr/2025 12:34:16] "[31m[1mGET /api/run HTTP/1.1[0m" 405 -
+2025-04-15 19:48:20,548 - INFO - Gemini API initialized successfully
+2025-04-15 19:48:20,557 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-15 19:48:20,557 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-15 19:48:20,598 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.89:5000
+2025-04-15 19:48:20,599 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-15 19:51:40,367 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:40] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-15 19:51:40,631 - INFO - Running with browser GUI visible
+2025-04-15 19:51:40,632 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:40] "POST /api/run HTTP/1.1" 200 -
+2025-04-15 19:51:40,633 - INFO - Proactively clearing ChromeDriver cache at C:\Users\sprag\appdata\roaming\undetected_chromedriver
+2025-04-15 19:51:40,638 - INFO - Detected Chrome version: 135.0.7049.85
+2025-04-15 19:51:40,639 - INFO - Using Chrome major version: 135
+2025-04-15 19:51:40,644 - INFO - Initializing Chrome driver with explicit version: 135
+2025-04-15 19:51:40,736 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:40] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:41,083 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:41] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:42,682 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:42] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:42,705 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-15 19:51:45,433 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:45] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:46,685 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:46] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:47,973 - INFO - Chrome driver initialized successfully
+2025-04-15 19:51:47,973 - INFO - Navigating to Internshala login page
+2025-04-15 19:51:49,266 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:49] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:51,716 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:51] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:53,838 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:53] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:55,524 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:55] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:57,839 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:57] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:51:59,528 - INFO - 127.0.0.1 - - [15/Apr/2025 19:51:59] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:02,267 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:02] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:03,764 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:03] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:05,835 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:05] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:07,528 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:07] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:09,849 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:09] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:11,527 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:11] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:13,841 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:13] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:15,519 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:15] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:15,717 - ERROR - Still on login page after submission - credentials likely incorrect
+2025-04-15 19:52:15,717 - ERROR - Login failed, cannot proceed
+2025-04-15 19:52:16,296 - INFO - Browser session closed
+2025-04-15 19:52:16,989 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:16] "GET /api/status/abab5424-8b25-4869-9c56-f30c4924b0fc HTTP/1.1" 200 -
+2025-04-15 19:52:20,013 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:20] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-15 19:52:20,332 - INFO - Running with browser GUI visible
+2025-04-15 19:52:20,333 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:20] "POST /api/run HTTP/1.1" 200 -
+2025-04-15 19:52:20,334 - INFO - Proactively clearing ChromeDriver cache at C:\Users\sprag\appdata\roaming\undetected_chromedriver
+2025-04-15 19:52:20,353 - INFO - Detected Chrome version: 135.0.7049.85
+2025-04-15 19:52:20,354 - INFO - Using Chrome major version: 135
+2025-04-15 19:52:20,355 - INFO - Initializing Chrome driver with explicit version: 135
+2025-04-15 19:52:20,592 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:20] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:20,688 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:20] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:22,005 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-15 19:52:22,388 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:22] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:25,270 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:25] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:26,496 - INFO - Chrome driver initialized successfully
+2025-04-15 19:52:26,497 - INFO - Navigating to Internshala login page
+2025-04-15 19:52:26,559 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:26] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:28,972 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:28] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:30,515 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:30] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:32,956 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:32] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:34,513 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:34] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:36,830 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:36] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:38,950 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:38] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:41,249 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:41] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:42,837 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:42] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:44,521 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:44] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:46,948 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:46] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:48,832 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:48] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:49,524 - ERROR - Still on login page after submission - credentials likely incorrect
+2025-04-15 19:52:49,524 - ERROR - Login failed, cannot proceed
+2025-04-15 19:52:50,358 - INFO - Browser session closed
+2025-04-15 19:52:50,389 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:50] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:52,705 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:52] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:54,388 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:54] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:52:56,709 - INFO - 127.0.0.1 - - [15/Apr/2025 19:52:56] "GET /api/status/c8e97c05-4182-45c7-9c6f-5bf70766e52b HTTP/1.1" 200 -
+2025-04-15 19:53:16,640 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:16] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-15 19:53:16,958 - INFO - Running with browser GUI visible
+2025-04-15 19:53:16,959 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:16] "POST /api/run HTTP/1.1" 200 -
+2025-04-15 19:53:16,959 - INFO - Proactively clearing ChromeDriver cache at C:\Users\sprag\appdata\roaming\undetected_chromedriver
+2025-04-15 19:53:16,972 - INFO - Detected Chrome version: 135.0.7049.85
+2025-04-15 19:53:16,973 - INFO - Using Chrome major version: 135
+2025-04-15 19:53:16,975 - INFO - Initializing Chrome driver with explicit version: 135
+2025-04-15 19:53:17,215 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:17] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:17,305 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:17] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:18,991 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:18] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:19,240 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-15 19:53:21,473 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:21] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:23,136 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:23] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:23,291 - INFO - Chrome driver initialized successfully
+2025-04-15 19:53:23,302 - INFO - Navigating to Internshala login page
+2025-04-15 19:53:26,029 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:26] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:27,762 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:27] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:29,830 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:29] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:31,515 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:31] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:34,035 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:34] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:35,620 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:35] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:37,842 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:37] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:39,519 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:39] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:41,840 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:41] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:43,525 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:43] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:45,831 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:45] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:47,528 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:47] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:49,833 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:49] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:51,521 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:51] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:52,869 - INFO - Successfully logged in
+2025-04-15 19:53:52,869 - INFO - Navigating to profile page to extract preferences
+2025-04-15 19:53:54,189 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:54] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:55,528 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:55] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:57,841 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:57] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:53:59,523 - INFO - 127.0.0.1 - - [15/Apr/2025 19:53:59] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:01,834 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:01] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:03,849 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:03] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:05,518 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:05] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:07,825 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:07] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:08,946 - WARNING - Could not extract skills: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00F580E3+60707]
+	GetHandleVerifier [0x00F58124+60772]
+	(No symbol) [0x00D80683]
+	(No symbol) [0x00DC8660]
+	(No symbol) [0x00DC89FB]
+	(No symbol) [0x00E11022]
+	(No symbol) [0x00DED094]
+	(No symbol) [0x00E0E824]
+	(No symbol) [0x00DECE46]
+	(No symbol) [0x00DBC5D3]
+	(No symbol) [0x00DBD424]
+	GetHandleVerifier [0x0119BBC3+2435075]
+	GetHandleVerifier [0x01197163+2416035]
+	GetHandleVerifier [0x011B350C+2531660]
+	GetHandleVerifier [0x00F6F1B5+155125]
+	GetHandleVerifier [0x00F75B5D+182173]
+	GetHandleVerifier [0x00F5F9B8+91640]
+	GetHandleVerifier [0x00F5FB60+92064]
+	GetHandleVerifier [0x00F4A620+4704]
+	BaseThreadInitThunk [0x765A5D49+25]
+	RtlInitializeExceptionChain [0x77D2CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x77D2CE91+561]
+
+2025-04-15 19:54:09,523 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:09] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:11,838 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:11] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:13,427 - INFO - Extracted 0 preferred locations
+2025-04-15 19:54:13,448 - INFO - Extracted 0 preferred categories
+2025-04-15 19:54:13,469 - WARNING - Could not extract work from home preference: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//label[contains(text(), 'work from home')]"}
+  (Session info: chrome=135.0.7049.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00F580E3+60707]
+	GetHandleVerifier [0x00F58124+60772]
+	(No symbol) [0x00D80683]
+	(No symbol) [0x00DC8660]
+	(No symbol) [0x00DC89FB]
+	(No symbol) [0x00E11022]
+	(No symbol) [0x00DED094]
+	(No symbol) [0x00E0E824]
+	(No symbol) [0x00DECE46]
+	(No symbol) [0x00DBC5D3]
+	(No symbol) [0x00DBD424]
+	GetHandleVerifier [0x0119BBC3+2435075]
+	GetHandleVerifier [0x01197163+2416035]
+	GetHandleVerifier [0x011B350C+2531660]
+	GetHandleVerifier [0x00F6F1B5+155125]
+	GetHandleVerifier [0x00F75B5D+182173]
+	GetHandleVerifier [0x00F5F9B8+91640]
+	GetHandleVerifier [0x00F5FB60+92064]
+	GetHandleVerifier [0x00F4A620+4704]
+	BaseThreadInitThunk [0x765A5D49+25]
+	RtlInitializeExceptionChain [0x77D2CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x77D2CE91+561]
+
+2025-04-15 19:54:13,470 - INFO - Successfully extracted preferences from profile
+2025-04-15 19:54:13,473 - INFO - Navigating to internships page
+2025-04-15 19:54:13,695 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:13] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:15,830 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:15] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:17,526 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:17] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:17,933 - INFO - Applying internship filters
+2025-04-15 19:54:19,832 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:19] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:21,524 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:21] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:23,850 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:23] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:28,151 - ERROR - Error applying filters: Message: 
+
+2025-04-15 19:54:28,209 - INFO - Found 42 internship listings
+2025-04-15 19:54:28,235 - WARNING - Error processing internship listing 0: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//a[contains(@class, 'job-title-href')]"}
+  (Session info: chrome=135.0.7049.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00F580E3+60707]
+	GetHandleVerifier [0x00F58124+60772]
+	(No symbol) [0x00D80683]
+	(No symbol) [0x00DC8660]
+	(No symbol) [0x00DC89FB]
+	(No symbol) [0x00DBDD81]
+	(No symbol) [0x00DED094]
+	(No symbol) [0x00DBDCA4]
+	(No symbol) [0x00DED2C4]
+	(No symbol) [0x00E0E824]
+	(No symbol) [0x00DECE46]
+	(No symbol) [0x00DBC5D3]
+	(No symbol) [0x00DBD424]
+	GetHandleVerifier [0x0119BBC3+2435075]
+	GetHandleVerifier [0x01197163+2416035]
+	GetHandleVerifier [0x011B350C+2531660]
+	GetHandleVerifier [0x00F6F1B5+155125]
+	GetHandleVerifier [0x00F75B5D+182173]
+	GetHandleVerifier [0x00F5F9B8+91640]
+	GetHandleVerifier [0x00F5FB60+92064]
+	GetHandleVerifier [0x00F4A620+4704]
+	BaseThreadInitThunk [0x765A5D49+25]
+	RtlInitializeExceptionChain [0x77D2CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x77D2CE91+561]
+
+2025-04-15 19:54:28,255 - WARNING - Error processing internship listing 1: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//a[contains(@class, 'job-title-href')]"}
+  (Session info: chrome=135.0.7049.85); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x00F580E3+60707]
+	GetHandleVerifier [0x00F58124+60772]
+	(No symbol) [0x00D80683]
+	(No symbol) [0x00DC8660]
+	(No symbol) [0x00DC89FB]
+	(No symbol) [0x00DBDD81]
+	(No symbol) [0x00DED094]
+	(No symbol) [0x00DBDCA4]
+	(No symbol) [0x00DED2C4]
+	(No symbol) [0x00E0E824]
+	(No symbol) [0x00DECE46]
+	(No symbol) [0x00DBC5D3]
+	(No symbol) [0x00DBD424]
+	GetHandleVerifier [0x0119BBC3+2435075]
+	GetHandleVerifier [0x01197163+2416035]
+	GetHandleVerifier [0x011B350C+2531660]
+	GetHandleVerifier [0x00F6F1B5+155125]
+	GetHandleVerifier [0x00F75B5D+182173]
+	GetHandleVerifier [0x00F5F9B8+91640]
+	GetHandleVerifier [0x00F5FB60+92064]
+	GetHandleVerifier [0x00F4A620+4704]
+	BaseThreadInitThunk [0x765A5D49+25]
+	RtlInitializeExceptionChain [0x77D2CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x77D2CE91+561]
+
+2025-04-15 19:54:28,391 - INFO - Found suitable internship: Junior Business Analyst/Jr. Operations Analyst (AI Projects) at Vsure Consultancy Services
+Actively hiring
+2025-04-15 19:54:28,535 - INFO - Found suitable internship: Web Development at Le Mark Institute
+2025-04-15 19:54:28,632 - INFO - Found suitable internship: Information Technology at Tata AIA Life Insurance
+2025-04-15 19:54:28,718 - INFO - Found suitable internship: Flutter Development at Quantasis Private Limited
+Actively hiring
+2025-04-15 19:54:28,809 - INFO - Found suitable internship: Python Development at Digite Infotech Private Limited
+Actively hiring
+2025-04-15 19:54:28,900 - INFO - Found suitable internship: Full Stack Development at Vidyarishi
+2025-04-15 19:54:28,993 - INFO - Found suitable internship: Software Development Engineering (Web) at KVAR Technologies Private Limited
+Actively hiring
+2025-04-15 19:54:29,087 - INFO - Found suitable internship: Full Stack Development at Online Eduversity
+2025-04-15 19:54:29,088 - INFO - Found 8 suitable internships
+2025-04-15 19:54:29,088 - INFO - Attempting to apply for Junior Business Analyst/Jr. Operations Analyst (AI Projects) at Vsure Consultancy Services
+Actively hiring
+2025-04-15 19:54:33,868 - INFO - Clicking apply button for Junior Business Analyst/Jr. Operations Analyst (AI Projects)
+2025-04-15 19:54:38,839 - INFO - 127.0.0.1 - - [15/Apr/2025 19:54:38] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:54:40,402 - INFO - No 'Proceed to Application' button found, might be already on application form
+2025-04-15 19:54:40,513 - INFO - Application form found
+2025-04-15 19:54:40,580 - INFO - Using 1 generic textareas found on application form
+2025-04-15 19:54:42,417 - WARNING - Could not fill field: Message: element not interactable
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+	GetHandleVerifier [0x00F580E3+60707]
+	GetHandleVerifier [0x00F58124+60772]
+	(No symbol) [0x00D804FE]
+	(No symbol) [0x00DBFC43]
+	(No symbol) [0x00DED04C]
+	(No symbol) [0x00DBDCA4]
+	(No symbol) [0x00DED2C4]
+	(No symbol) [0x00E0E824]
+	(No symbol) [0x00DECE46]
+	(No symbol) [0x00DBC5D3]
+	(No symbol) [0x00DBD424]
+	GetHandleVerifier [0x0119BBC3+2435075]
+	GetHandleVerifier [0x01197163+2416035]
+	GetHandleVerifier [0x011B350C+2531660]
+	GetHandleVerifier [0x00F6F1B5+155125]
+	GetHandleVerifier [0x00F75B5D+182173]
+	GetHandleVerifier [0x00F5F9B8+91640]
+	GetHandleVerifier [0x00F5FB60+92064]
+	GetHandleVerifier [0x00F4A620+4704]
+	BaseThreadInitThunk [0x765A5D49+25]
+	RtlInitializeExceptionChain [0x77D2CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x77D2CE91+561]
+
+2025-04-15 19:54:43,941 - INFO - Found submit button, clicking now
+2025-04-15 19:54:45,266 - INFO - Received confirmation of successful application
+2025-04-15 19:54:45,266 - INFO - Successfully applied to Junior Business Analyst/Jr. Operations Analyst (AI Projects) (1/2)
+2025-04-15 19:54:51,135 - INFO - Attempting to apply for Web Development at Le Mark Institute
+2025-04-15 19:54:58,712 - INFO - Clicking apply button for Web Development
+2025-04-15 19:55:05,406 - INFO - No 'Proceed to Application' button found, might be already on application form
+2025-04-15 19:55:05,479 - INFO - Application form found
+2025-04-15 19:55:05,522 - INFO - Using 1 generic textareas found on application form
+2025-04-15 19:55:06,910 - WARNING - Could not fill field: Message: element not interactable
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+	GetHandleVerifier [0x00F580E3+60707]
+	GetHandleVerifier [0x00F58124+60772]
+	(No symbol) [0x00D804FE]
+	(No symbol) [0x00DBFC43]
+	(No symbol) [0x00DED04C]
+	(No symbol) [0x00DBDCA4]
+	(No symbol) [0x00DED2C4]
+	(No symbol) [0x00E0E824]
+	(No symbol) [0x00DECE46]
+	(No symbol) [0x00DBC5D3]
+	(No symbol) [0x00DBD424]
+	GetHandleVerifier [0x0119BBC3+2435075]
+	GetHandleVerifier [0x01197163+2416035]
+	GetHandleVerifier [0x011B350C+2531660]
+	GetHandleVerifier [0x00F6F1B5+155125]
+	GetHandleVerifier [0x00F75B5D+182173]
+	GetHandleVerifier [0x00F5F9B8+91640]
+	GetHandleVerifier [0x00F5FB60+92064]
+	GetHandleVerifier [0x00F4A620+4704]
+	BaseThreadInitThunk [0x765A5D49+25]
+	RtlInitializeExceptionChain [0x77D2CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x77D2CE91+561]
+
+2025-04-15 19:55:08,468 - INFO - Found submit button, clicking now
+2025-04-15 19:55:10,054 - INFO - Received confirmation of successful application
+2025-04-15 19:55:10,054 - INFO - Successfully applied to Web Development (2/2)
+2025-04-15 19:55:15,353 - INFO - Reached maximum application limit of 2
+2025-04-15 19:55:15,771 - INFO - 127.0.0.1 - - [15/Apr/2025 19:55:15] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-15 19:55:16,076 - INFO - Browser session closed
+2025-04-15 19:55:16,991 - INFO - 127.0.0.1 - - [15/Apr/2025 19:55:16] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
