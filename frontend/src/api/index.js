@@ -2,7 +2,7 @@
  * API client for the Internshala automation backend
  */
 
-const API_BASE_URL = 'https://internauto-project.onrender.com/api/run' || "https://internauto-project.onrender.com/api/status/<job_id>" || "https://internauto-project.onrender.com/api/health" || "https://internauto-project.onrender.com/api/career_suggestion";
+const API_BASE_URL = 'https://internauto-project.onrender.com/api'; // Fixed: Only the base URL
 
 export const InternshalaAPI = {
     /**
