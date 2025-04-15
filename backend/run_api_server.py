@@ -21,7 +21,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Enable CORS for the Flask app
-CORS(app, origins=["https://internauto.pragyesh.tech"])
+CORS(app, origins=["https://internauto.pragyesh.tech", "http://localhost:5173"])
 
 if __name__ == "__main__":
     # Set up argument parser

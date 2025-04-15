@@ -62,32 +62,31 @@ const AutomationStatus = ({ jobId, onBack }) => {
                         );
                         
                         if (hasLoginFailure && status !== 'failed') {
-                            toast.error('Login failed. Please check your credentials and try again.');
+                            toast.error("Login to Internshala failed. Please check your credentials.");
                         }
                         
                         return [...prev, ...newMessages];
                     });
                 }
                 
-                // If completed or failed, show appropriate toast
+                // If job is completed, show success message
                 if (data.status === 'completed' && status !== 'completed') {
-                    toast.success('Automation completed successfully!');
-                } else if (data.status === 'failed' && status !== 'failed') {
-                    // Don't show generic error toast if we already showed a specific login error
-                    const hasLoginError = messages.some(m => 
-                        m.level === "ERROR" && m.message.toLowerCase().includes("login")
-                    );
-                    
-                    if (!hasLoginError) {
-                        toast.error('Automation process failed');
-                    }
+                    toast.success("Automation completed successfully!");
+                }
+                
+                // If job failed, show error message
+                if (data.status === 'failed' && status !== 'failed') {
+                    toast.error("Automation failed. See details in the log.");
                 }
             } else {
-                setError(data.message || 'Failed to get status. Please try again later.');
+                setError("Failed to get job status");
+                if (status !== 'failed') {
+                    toast.error("Failed to get status update");
+                }
             }
-        } catch (error) {
-            console.error('Error fetching status:', error);
-            setError('Failed to connect to the server. Please try again later.');
+        } catch (err) {
+            console.error('Error checking job status:', err);
+            setError(err.message || "Network error");
         }
     };
 

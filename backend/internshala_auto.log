@@ -6314,3 +6314,45 @@ Stacktrace:
 2025-04-15 19:55:15,771 - INFO - 127.0.0.1 - - [15/Apr/2025 19:55:15] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
 2025-04-15 19:55:16,076 - INFO - Browser session closed
 2025-04-15 19:55:16,991 - INFO - 127.0.0.1 - - [15/Apr/2025 19:55:16] "GET /api/status/07ffed2f-5963-4f7d-a20f-ee95e433ff71 HTTP/1.1" 200 -
+2025-04-16 00:57:00,997 - INFO - Gemini API initialized successfully
+2025-04-16 00:57:01,011 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-16 00:57:01,011 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-16 00:57:01,072 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.1.89:5000
+2025-04-16 00:57:01,073 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-16 00:57:40,855 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:40] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-16 00:57:41,110 - INFO - Running with browser GUI visible
+2025-04-16 00:57:41,110 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:41] "POST /api/run HTTP/1.1" 200 -
+2025-04-16 00:57:41,111 - INFO - Proactively clearing ChromeDriver cache at C:\Users\sprag\appdata\roaming\undetected_chromedriver
+2025-04-16 00:57:41,118 - INFO - Detected Chrome version: 135.0.7049.85
+2025-04-16 00:57:41,121 - INFO - Using Chrome major version: 135
+2025-04-16 00:57:41,126 - INFO - Initializing Chrome driver with explicit version: 135
+2025-04-16 00:57:41,297 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:41] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:41,638 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:41] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:43,492 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:43] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:44,185 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-16 00:57:45,193 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:45] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:47,795 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:47] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:49,312 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:49] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:50,911 - INFO - Chrome driver initialized successfully
+2025-04-16 00:57:50,928 - INFO - Navigating to Internshala login page
+2025-04-16 00:57:54,217 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:54] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:55,422 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:55] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:57,756 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:57] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:57:59,624 - INFO - 127.0.0.1 - - [16/Apr/2025 00:57:59] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:01,727 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:01] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:03,411 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:03] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:05,779 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:05] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:07,718 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:07] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:09,516 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:09] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:11,720 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:11] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:13,410 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:13] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:15,722 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:15] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:17,409 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:17] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:17,592 - ERROR - Still on login page after submission - credentials likely incorrect
+2025-04-16 00:58:17,592 - ERROR - Login failed, cannot proceed
+2025-04-16 00:58:18,591 - INFO - Browser session closed
+2025-04-16 00:58:19,493 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:19] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -
+2025-04-16 00:58:21,178 - INFO - 127.0.0.1 - - [16/Apr/2025 00:58:21] "GET /api/status/8fc475cc-add8-4a48-8a95-efc554ee679d HTTP/1.1" 200 -

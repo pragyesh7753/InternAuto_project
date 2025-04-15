@@ -21,39 +21,26 @@ const TawkToChat = () => {
     const s0 = document.getElementsByTagName("script")[0];
     
     s1.async = true;
-    s1.src = 'https://embed.tawk.to/67fded8b103aa0190d9e877a/1iorufr69'; // Your existing property ID
+    s1.src = 'https://embed.tawk.to/67fded8b103aa0190d9e877a/1iorufr69'; 
     s1.charset = 'UTF-8';
     s1.setAttribute('crossorigin', '*');
     
     if (s0 && s0.parentNode) {
       s0.parentNode.insertBefore(s1, s0);
-      console.log('Tawk.to script added to DOM');
     } else {
       document.head.appendChild(s1);
-      console.log('Tawk.to script added to head (fallback)');
     }
 
-    // Set up event handlers
-    window.Tawk_API = {
-      onLoad: function() {
-        console.log('Tawk.to chat widget loaded successfully');
-      },
-      onStatusChange: function(status) {
-        console.log('Tawk.to status changed to:', status);
-      }
-    };
-
+    // Cleanup function
     return () => {
-      // Clean up function
       const tawkScript = document.querySelector('script[src*="tawk.to"]');
       if (tawkScript) {
         tawkScript.remove();
-        console.log('Tawk.to script removed from DOM');
       }
     };
   }, []);
 
-  return null; // Component doesn't render anything visible
+  return null; // This component doesn't render anything visible
 };
 
 export default TawkToChat;
