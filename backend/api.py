@@ -143,7 +143,7 @@ def start_automation():
     email = data.get('email')
     password = data.get('password')
     headless = data.get('headless', True)  # Default to headless mode
-    limit = data.get('limit', 5)  # Default to 5 applications
+    limit = data.get('limit', 15)  # Default to 5 applications
     
     # Generate a job ID
     import uuid
