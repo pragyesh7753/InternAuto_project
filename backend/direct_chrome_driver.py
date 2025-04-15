@@ -5,6 +5,7 @@ Provides a fallback mechanism when undetected_chromedriver fails.
 
 import logging
 import os
+import platform
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -69,6 +70,17 @@ def start_chrome_session():
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-infobars")
         options.add_argument("--window-size=1920,1080")
+        
+        # Handle Chrome binary path
+        chrome_binary = os.environ.get('CHROME_BINARY_PATH')
+        if not chrome_binary:
+            chrome_binary = find_chrome_executable()
+            
+        if chrome_binary and isinstance(chrome_binary, str) and os.path.exists(chrome_binary):
+            logger.info(f"Setting Chrome binary path to: {chrome_binary}")
+            options.binary_location = chrome_binary
+        else:
+            logger.info("Using default Chrome binary path")
         
         # Create Chrome WebDriver service
         service = Service(ChromeDriverManager().install())

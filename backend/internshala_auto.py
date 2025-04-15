@@ -8,6 +8,7 @@ import time
 import logging
 import json
 import os
+import platform
 
 # Set up logging
 logging.basicConfig(
@@ -26,6 +27,37 @@ class InternshalaAutomation:
     Handles browser interaction, login, finding suitable internships,
     and submitting applications automatically.
     """
+    def find_chrome_executable(self):
+        """Find the Chrome executable path based on the operating system"""
+        if platform.system() == "Windows":
+            paths = [
+                os.path.join(os.environ.get('PROGRAMFILES', 'C:\\Program Files'), 'Google\\Chrome\\Application\\chrome.exe'),
+                os.path.join(os.environ.get('PROGRAMFILES(X86)', 'C:\\Program Files (x86)'), 'Google\\Chrome\\Application\\chrome.exe'),
+                os.path.join(os.environ.get('LOCALAPPDATA', ''), 'Google\\Chrome\\Application\\chrome.exe')
+            ]
+            for path in paths:
+                if os.path.exists(path):
+                    return path
+        elif platform.system() == "Darwin":  # macOS
+            paths = [
+                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                "/Applications/Chrome.app/Contents/MacOS/Chrome",
+            ]
+            for path in paths:
+                if os.path.exists(path):
+                    return path
+        elif platform.system() == "Linux":
+            paths = [
+                "/usr/bin/google-chrome",
+                "/usr/bin/chromium",
+                "/usr/bin/chromium-browser",
+            ]
+            for path in paths:
+                if os.path.exists(path):
+                    return path
+        
+        return None
+
     def __init__(self, email, password, limit=5, headless=True):
         """
         Initialize the automation with user credentials and browser preferences.
@@ -57,11 +89,21 @@ class InternshalaAutomation:
         self.chrome_options.add_argument('--disable-notifications')
         self.chrome_options.add_argument('--start-maximized')
         
-        # Handle binary location safely
-        # Use environment variable if available, otherwise don't set binary location
+        # Handle binary location carefully
         chrome_binary = os.environ.get('CHROME_BINARY_PATH')
-        if chrome_binary:
+        
+        # If environment variable is not set, try to find Chrome executable automatically
+        if not chrome_binary:
+            chrome_binary = self.find_chrome_executable()
+            if chrome_binary:
+                logger.info(f"Automatically found Chrome binary at: {chrome_binary}")
+        
+        # Only set binary_location if a valid string path was found
+        if chrome_binary and isinstance(chrome_binary, str) and os.path.exists(chrome_binary):
             self.chrome_options.binary_location = chrome_binary
+            logger.info(f"Setting Chrome binary location to: {chrome_binary}")
+        else:
+            logger.info("No Chrome binary path set - using system default")
         
         # Initialize WebDriver with service object to handle path issues
         try:

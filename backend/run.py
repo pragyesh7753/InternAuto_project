@@ -6,6 +6,7 @@ Handles command line arguments and starts the automation process.
 from internshala_auto import InternshalaAutomation
 import logging
 import argparse
+import sys
 from webdriver_manager.chrome import ChromeDriverManager  # Correct import
 
 # Set up logging
@@ -20,11 +21,17 @@ logging.basicConfig(
 
 def prepare_environment():
     """Prepare the environment for ChromeDriver"""
-    # Use the ChromeDriverManager to get Chrome version
-    chrome_version = ChromeDriverManager().driver.get_browser_version_from_os()
-    return {
-        'chrome_version': chrome_version
-    }
+    try:
+        # Use the ChromeDriverManager to get Chrome version
+        chrome_version = ChromeDriverManager().driver.get_browser_version_from_os()
+        return {
+            'chrome_version': chrome_version
+        }
+    except Exception as e:
+        logging.warning(f"Could not determine Chrome version: {str(e)}")
+        return {
+            'chrome_version': 'Unknown'
+        }
 
 if __name__ == "__main__":
     # Set up argument parser
@@ -41,13 +48,31 @@ if __name__ == "__main__":
     try:
         # Prepare environment for ChromeDriver
         if args.reset:
-            env_info = prepare_environment()
-            logging.info(f"Chrome version detected: {env_info['chrome_version']}")
+            try:
+                from chromedriver_manager import prepare_environment, clear_chromedriver_cache
+                clear_chromedriver_cache()
+                env_info = prepare_environment()
+                logging.info(f"Chrome version detected: {env_info['chrome_version']}")
+            except Exception as e:
+                logging.warning(f"Failed to prepare environment, but continuing anyway: {str(e)}")
         
         # Create and run the bot with user provided credentials
-        bot = InternshalaAutomation(args.email, args.password, headless=args.headless)
+        bot = InternshalaAutomation(args.email, args.password, limit=args.limit, headless=args.headless)
         bot.run(max_applications=args.limit)
         
         logging.info("Automation completed successfully")
+        
     except Exception as e:
         logging.error(f"Automation failed with error: {str(e)}")
+        
+        # Try fallback method
+        try:
+            logging.info("Attempting fallback method...")
+            from fallback_run import run_internshala_automation
+            success = run_internshala_automation()
+            if not success:
+                logging.error("Fallback method also failed")
+                sys.exit(1)
+        except Exception as fallback_error:
+            logging.error(f"Fallback method failed: {str(fallback_error)}")
+            sys.exit(1)
