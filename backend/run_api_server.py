@@ -4,7 +4,6 @@ This provides the interface for frontend applications to control the automation.
 """
 
 from flask import Flask
-from flask_cors import CORS
 from api import app
 import argparse
 import logging
@@ -20,8 +19,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Enable CORS for the Flask app
-CORS(app, origins=["https://internauto.pragyesh.tech", "http://localhost:5173"])
+# Remove duplicate CORS configuration as it's already set in api.py
 
 if __name__ == "__main__":
     # Set up argument parser

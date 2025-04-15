@@ -17,11 +17,18 @@ function CareerForm({ onClose }) {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await fetch('https://internauto-backend.onrender.com/api/career_suggestion', {
+            // Use the correct API endpoint with the same origin as the API in the api/index.js
+            // This ensures consistent CORS behavior across your app
+            const apiUrl = 'https://internauto-project.onrender.com/api/career_suggestion';
+            
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                // Setting these CORS options might help in some cases
+                credentials: 'same-origin',
+                mode: 'cors',
                 body: JSON.stringify({
                     goal: goal,
                     education: education,
