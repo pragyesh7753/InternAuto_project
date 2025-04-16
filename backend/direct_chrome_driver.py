@@ -76,7 +76,8 @@ def start_chrome_session():
         if not chrome_binary:
             chrome_binary = find_chrome_executable()
         
-        if chrome_binary and isinstance(chrome_binary, str) and os.path.exists(chrome_binary):
+        # Only set binary_location if a valid, non-empty string path was found
+        if isinstance(chrome_binary, str) and chrome_binary and os.path.exists(chrome_binary):
             logger.info(f"Setting Chrome binary path to: {chrome_binary}")
             options.binary_location = chrome_binary
         else:
