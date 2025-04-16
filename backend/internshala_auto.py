@@ -71,18 +71,15 @@ class InternshalaAutomation:
         self.email = email
         self.password = password
         self.limit = limit
-        self.preferences = None  # Will be populated from Internshala profile
         self.headless = headless
+        self.applications_submitted = 0
         
-        # Initialize Chrome options with proper binary path handling
+        # Configure Chrome options
         self.chrome_options = uc.ChromeOptions()
-        
-        # Add standard options
         if headless:
             self.chrome_options.add_argument('--headless')
-            self.chrome_options.add_argument('--disable-gpu')
         
-        # Add common options for stability
+        self.chrome_options.add_argument('--disable-gpu')
         self.chrome_options.add_argument('--no-sandbox')
         self.chrome_options.add_argument('--disable-dev-shm-usage')
         self.chrome_options.add_argument('--disable-extensions')
@@ -103,6 +100,7 @@ class InternshalaAutomation:
             self.chrome_options.binary_location = chrome_binary
             logger.info(f"Setting Chrome binary location to: {chrome_binary}")
         else:
+            # Don't set binary_location if we don't have a valid path
             logger.info("No Chrome binary path set - using system default")
         
         # Initialize WebDriver with service object to handle path issues

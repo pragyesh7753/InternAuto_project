@@ -80,12 +80,13 @@ def start_chrome_session():
             logger.info(f"Setting Chrome binary path to: {chrome_binary}")
             options.binary_location = chrome_binary
         else:
+            # Don't set binary_location if we don't have a valid path
             logger.info("Using default Chrome binary path")
         
         # Create Chrome WebDriver service
         service = Service(ChromeDriverManager().install())
         
-        # Create WebDriver instance
+        # Create WebDriver instance without specifying binary location if not found
         driver = webdriver.Chrome(service=service, options=options)
         
         # Hide automation flags

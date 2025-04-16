@@ -7,6 +7,7 @@ from internshala_auto import InternshalaAutomation
 import logging
 import argparse
 import sys
+import os
 from webdriver_manager.chrome import ChromeDriverManager  # Correct import
 
 # Set up logging
@@ -55,6 +56,18 @@ if __name__ == "__main__":
                 logging.info(f"Chrome version detected: {env_info['chrome_version']}")
             except Exception as e:
                 logging.warning(f"Failed to prepare environment, but continuing anyway: {str(e)}")
+        
+        # Try to find Chrome binary path and set it in environment variable
+        try:
+            from internshala_auto import InternshalaAutomation
+            chrome_finder = InternshalaAutomation(args.email, args.password, limit=0, headless=args.headless)
+            chrome_path = chrome_finder.find_chrome_executable()
+            if chrome_path:
+                os.environ['CHROME_BINARY_PATH'] = chrome_path
+                logging.info(f"Setting Chrome binary path: {chrome_path}")
+            del chrome_finder  # Clean up the temporary instance
+        except Exception as e:
+            logging.warning(f"Could not pre-detect Chrome binary path: {str(e)}")
         
         # Create and run the bot with user provided credentials
         bot = InternshalaAutomation(args.email, args.password, limit=args.limit, headless=args.headless)

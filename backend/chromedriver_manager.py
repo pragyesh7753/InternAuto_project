@@ -72,6 +72,19 @@ def prepare_environment():
     if clear_chromedriver_cache():
         logger.info("ChromeDriver cache cleared successfully")
     
+    # Try to find Chrome binary path
+    try:
+        import os
+        import platform
+        from internshala_auto import InternshalaAutomation
+        dummy_instance = InternshalaAutomation.__new__(InternshalaAutomation)
+        chrome_path = dummy_instance.find_chrome_executable()
+        if chrome_path and isinstance(chrome_path, str) and os.path.exists(chrome_path):
+            os.environ['CHROME_BINARY_PATH'] = chrome_path
+            logger.info(f"Setting Chrome binary path: {chrome_path}")
+    except Exception as e:
+        logger.warning(f"Could not set Chrome binary path: {str(e)}")
+    
     return {
         "chrome_version": chrome_version
     }
