@@ -3,6 +3,7 @@ import { FaFilePdf, FaFileWord, FaDownload, FaCopy, FaArrowRight, FaArrowLeft, F
 import toast from 'react-hot-toast';
 import jsPDF from 'jspdf';
 import { saveAs } from 'file-saver';
+import { Document, Packer, Paragraph, TextRun } from 'docx';
 
 // New component for education entries
 const EducationEntrySection = ({ entries, setEntries, isRequired = false }) => {
@@ -547,80 +548,76 @@ function ResumeForm({ onClose }) {
 
     const downloadDocx = async () => {
         try {
-            // Generate styled HTML for DOCX conversion
+            // Parse the resume text into sections
             const sections = parseResumeText(resumeText);
-            let htmlContent = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <style>
-                        body { font-family: Calibri, Arial, sans-serif; margin: 1in; }
-                        h1 { font-size: 18pt; text-align: center; margin-bottom: 0.1in; }
-                        .contact { font-size: 10pt; text-align: center; margin-bottom: 0.3in; }
-                        h2 { font-size: 14pt; border-bottom: 1pt solid #000000; margin-bottom: 0.1in; }
-                        .section { margin-bottom: 0.2in; }
-                        ul { margin-top: 0.1in; }
-                        li { margin-bottom: 0.05in; }
-                    </style>
-                </head>
-                <body>
-            `;
-            
-            // Add header
+            const docChildren = [];
+
+            // Header
             if (sections.header) {
-                htmlContent += `<h1>${sections.header.name}</h1>`;
-                htmlContent += `<p class="contact">${sections.header.contact}</p>`;
+                docChildren.push(
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: sections.header.name, bold: true, size: 36 }),
+                        ],
+                        alignment: 'center',
+                        spacing: { after: 100 },
+                    })
+                );
+                docChildren.push(
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: sections.header.contact, size: 20 })
+                        ],
+                        alignment: 'center',
+                    })
+                );
                 if (sections.header.additionalContact) {
-                    htmlContent += `<p class="contact">${sections.header.additionalContact}</p>`;
+                    docChildren.push(
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: sections.header.additionalContact, size: 20 })
+                            ],
+                            alignment: 'center',
+                        })
+                    );
                 }
+                docChildren.push(new Paragraph({}));
             }
-            
-            // Add content sections
+
+            // Content sections
             Object.entries(sections.content).forEach(([title, content]) => {
-                htmlContent += `<div class="section">`;
-                htmlContent += `<h2>${title}</h2>`;
-                htmlContent += `<ul>`;
+                docChildren.push(
+                    new Paragraph({
+                        children: [
+                            new TextRun({ text: title, bold: true, size: 28, underline: {} })
+                        ],
+                        spacing: { after: 80 },
+                    })
+                );
                 content.forEach(item => {
-                    htmlContent += `<li>${item}</li>`;
+                    docChildren.push(
+                        new Paragraph({
+                            children: [
+                                new TextRun({ text: item, size: 22 })
+                            ],
+                            bullet: { level: 0 },
+                        })
+                    );
                 });
-                htmlContent += `</ul>`;
-                htmlContent += `</div>`;
+                docChildren.push(new Paragraph({}));
             });
-            
-            htmlContent += `</body></html>`;
-            
-            // Dynamically import html-to-docx to avoid ESM/CJS issues
-            const HTMLtoDOCX = await import('html-to-docx').then(module => module.default || module);
-            
-            // Create a blob from the HTML content
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const arrayBuffer = await blob.arrayBuffer();
-            const uint8Array = new Uint8Array(arrayBuffer);
-            
-            // Convert to DOCX using html-to-docx with fallback options
-            let docxBlob;
-            try {
-                // First try with the modern API
-                docxBlob = await HTMLtoDOCX(htmlContent, null, {
-                    table: { row: { cantSplit: true } },
-                    footer: false,
-                    pageNumber: false
-                });
-            } catch (error) {
-                console.log('Falling back to alternative HTML-to-DOCX method');
-                // Fallback to handle different module formats
-                const options = {
-                    margins: { top: 1, bottom: 1, left: 1, right: 1 },
-                    font: 'Calibri',
-                    fontSize: 11
-                };
-                
-                // Try direct conversion from HTML string
-                const converter = new HTMLtoDOCX(options);
-                docxBlob = await converter.asBlob(htmlContent);
-            }
-            
-            saveAs(docxBlob, `resume_${name.replace(/\s+/g, '_')}.docx`);
+
+            const doc = new Document({
+                sections: [
+                    {
+                        properties: {},
+                        children: docChildren,
+                    },
+                ],
+            });
+
+            const blob = await Packer.toBlob(doc);
+            saveAs(blob, `resume_${name.replace(/\s+/g, '_')}.docx`);
             toast.success('Resume downloaded as DOCX!');
         } catch (error) {
             console.error('Error generating DOCX:', error);

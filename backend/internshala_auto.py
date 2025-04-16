@@ -99,6 +99,8 @@ class InternshalaAutomation:
         if isinstance(chrome_binary, str) and chrome_binary.strip() and os.path.exists(chrome_binary):
             self.chrome_options.binary_location = chrome_binary
             logger.info(f"Setting Chrome binary location to: {chrome_binary}")
+        elif chrome_binary is not None and not isinstance(chrome_binary, str):
+            logger.warning(f"Chrome binary path is not a string: {chrome_binary!r} (type: {type(chrome_binary)}) - skipping setting binary_location")
         else:
             logger.info(f"No valid Chrome binary path set (value: {chrome_binary!r}) - using system default")
         
