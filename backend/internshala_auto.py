@@ -100,8 +100,7 @@ class InternshalaAutomation:
             self.chrome_options.binary_location = chrome_binary
             logger.info(f"Setting Chrome binary location to: {chrome_binary}")
         else:
-            # Don't set binary_location if we don't have a valid path
-            logger.info("No Chrome binary path set - using system default")
+            logger.info(f"No valid Chrome binary path set (value: {chrome_binary!r}) - using system default")
         
         # Initialize WebDriver with service object to handle path issues
         try:

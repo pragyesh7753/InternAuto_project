@@ -75,13 +75,12 @@ def start_chrome_session():
         chrome_binary = os.environ.get('CHROME_BINARY_PATH')
         if not chrome_binary:
             chrome_binary = find_chrome_executable()
-            
+        
         if chrome_binary and isinstance(chrome_binary, str) and os.path.exists(chrome_binary):
             logger.info(f"Setting Chrome binary path to: {chrome_binary}")
             options.binary_location = chrome_binary
         else:
-            # Don't set binary_location if we don't have a valid path
-            logger.info("Using default Chrome binary path")
+            logger.info(f"No valid Chrome binary path set (value: {chrome_binary!r}) - using system default")
         
         # Create Chrome WebDriver service
         service = Service(ChromeDriverManager().install())

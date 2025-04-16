@@ -7,7 +7,7 @@ import logging
 import argparse
 import time
 import random
-from direct_chrome_driver import start_chrome_session, find_chrome_executable
+from direct_chrome_driver import start_chrome_session
 from config import INTERNSHALA_EMAIL, INTERNSHALA_PASSWORD
 
 # Set up logging
@@ -40,18 +40,6 @@ def run_internshala_automation():
     driver = None
     try:
         logger.info("Starting Internshala automation with fallback driver")
-        
-        # Try to find Chrome binary path
-        try:
-            import os
-            import platform
-            chrome_path = find_chrome_executable()
-            if chrome_path and isinstance(chrome_path, str) and os.path.exists(chrome_path):
-                os.environ['CHROME_BINARY_PATH'] = chrome_path
-                logger.info(f"Setting Chrome binary path for fallback: {chrome_path}")
-        except Exception as e:
-            logger.warning(f"Could not set Chrome binary path for fallback: {str(e)}")
-        
         driver = start_chrome_session()
         
         if not driver:
