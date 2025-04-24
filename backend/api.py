@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 # Enable CORS for all routes to allow requests from the React frontend
 # Update to explicitly allow frontend origin
-CORS(app, origins=["https://internauto.pragyesh.tech", "http://localhost:5173"], supports_credentials=True)
+CORS(app, origins=["https://internauto.pragyesh.tech", "http://localhost:5173", "http://localhost:4173"], supports_credentials=True)
 
 # Store for active automation jobs and their status
 jobs = {}

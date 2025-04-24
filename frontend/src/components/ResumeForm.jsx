@@ -12,8 +12,7 @@ const EducationEntrySection = ({ entries, setEntries, isRequired = false }) => {
             degree: '',
             institution: '',
             from: '',
-            to: '',
-            gpa: ''
+            to: ''
         }]);
     };
 
@@ -70,7 +69,7 @@ const EducationEntrySection = ({ entries, setEntries, isRequired = false }) => {
                         </div>
                     </div>
                     
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    <div className="grid grid-cols-2 gap-2">
                         <div>
                             <input
                                 value={entry.from}
@@ -89,15 +88,6 @@ const EducationEntrySection = ({ entries, setEntries, isRequired = false }) => {
                                 className="outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15"
                                 type="text"
                                 placeholder="To (Year or Present)"
-                            />
-                        </div>
-                        <div className="col-span-2 sm:col-span-1">
-                            <input
-                                value={entry.gpa}
-                                onChange={(e) => updateEntry(index, 'gpa', e.target.value)}
-                                className="outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15"
-                                type="text"
-                                placeholder="GPA (Optional)"
                             />
                         </div>
                     </div>
@@ -279,8 +269,7 @@ function ResumeForm({ onClose }) {
         degree: '',
         institution: '',
         from: '',
-        to: '',
-        gpa: ''
+        to: ''
     }]);
     const [experienceEntries, setExperienceEntries] = useState([]);
     const [skillsEntries, setSkillsEntries] = useState(['']);
@@ -365,22 +354,34 @@ function ResumeForm({ onClose }) {
         educationEntries
             .filter(entry => entry.degree.trim() && entry.institution.trim())
             .forEach(entry => {
-                resumeText += `• ${entry.degree}\n`;
+                // Update format to place years with the degree
+                resumeText += `• ${entry.degree} (${entry.from} - ${entry.to})\n`;
                 resumeText += `  ${entry.institution}\n`;
-                resumeText += `  ${entry.from} - ${entry.to}\n`;
-                if (entry.gpa) {
-                    resumeText += `  GPA: ${entry.gpa}\n`;
-                }
                 resumeText += "\n";
             });
         
-        // Add skills
+        // Add skills - updated to categorize skills
         resumeText += "SKILLS\n";
-        skillsEntries
-            .filter(entry => entry.trim())
-            .forEach(entry => {
-                resumeText += `• ${entry.trim().startsWith('•') ? entry.trim().substring(1).trim() : entry.trim()}\n`;
+        
+        // Use the same categorization function as in renderPreview
+        const { technicalSkills, softSkills } = categorizeSkills(skillsEntries.filter(entry => entry.trim()));
+        
+        // Add technical skills
+        if (technicalSkills.length > 0) {
+            resumeText += "Technical Skills:\n";
+            technicalSkills.forEach(skill => {
+                resumeText += `• ${skill.trim().startsWith('•') ? skill.trim().substring(1).trim() : skill.trim()}\n`;
             });
+        }
+        
+        // Add soft skills
+        if (softSkills.length > 0) {
+            resumeText += "\nSoft Skills:\n";
+            softSkills.forEach(skill => {
+                resumeText += `• ${skill.trim().startsWith('•') ? skill.trim().substring(1).trim() : skill.trim()}\n`;
+            });
+        }
+        
         resumeText += "\n";
         
         // Add experience if provided
@@ -450,6 +451,67 @@ function ResumeForm({ onClose }) {
         }
         
         return resumeText;
+    };
+
+    // Helper function to categorize skills - extracted to be used by both formatResumeText and renderPreview
+    const categorizeSkills = (skills) => {
+        const technicalSkills = [];
+        const softSkills = [];
+        
+        skills.forEach(skill => {
+            if (!skill.trim()) return;
+            
+            // Common technical skill keywords
+            const technicalKeywords = [
+                'programming', 'language', 'framework', 'database', 'sql', 'nosql',
+                'python', 'javascript', 'java', 'c#', 'c++', 'ruby', 'swift', 'kotlin',
+                'react', 'angular', 'vue', 'node', 'express', 'django', 'spring', 'rails',
+                'aws', 'azure', 'cloud', 'docker', 'kubernetes', 'devops', 'ci/cd',
+                'git', 'github', 'gitlab', 'bitbucket', 'version control', 'frontend', 'backend',
+                'html', 'css', 'sass', 'less', 'bootstrap', 'tailwind', 'responsive',
+                'api', 'rest', 'graphql', 'grpc', 'microservices', 'architecture',
+                'algorithm', 'data structure', 'design pattern', 'oop', 'functional',
+                'testing', 'unit test', 'integration test', 'qa', 'agile', 'scrum', 'kanban',
+                'linux', 'unix', 'windows', 'macos', 'operating system', 'bash', 'shell',
+                'mobile', 'android', 'ios', 'cross-platform', 'flutter', 'react native',
+                'machine learning', 'ml', 'ai', 'artificial intelligence', 'data science',
+                'analytics', 'visualization', 'statistics', 'math', 'algorithm'
+            ];
+            
+            // Common soft skill keywords
+            const softKeywords = [
+                'communication', 'teamwork', 'leadership', 'problem solving',
+                'critical thinking', 'creativity', 'time management', 'organization',
+                'adaptability', 'flexibility', 'interpersonal', 'collaboration',
+                'decision making', 'conflict resolution', 'emotional intelligence',
+                'empathy', 'negotiation', 'persuasion', 'presentation', 'public speaking',
+                'writing', 'listening', 'feedback', 'mentoring', 'coaching',
+                'customer service', 'attention to detail', 'multitasking', 'prioritization',
+                'stress management', 'work ethic', 'integrity', 'professionalism',
+                'initiative', 'motivation', 'dedication', 'cultural awareness',
+                'diversity', 'inclusion', 'project management', 'planning', 'strategic thinking'
+            ];
+            
+            const skillLower = skill.toLowerCase();
+            
+            // Check if the skill contains any technical or soft keywords
+            const isTechnical = technicalKeywords.some(keyword => 
+                skillLower.includes(keyword.toLowerCase())
+            );
+            
+            const isSoft = softKeywords.some(keyword => 
+                skillLower.includes(keyword.toLowerCase())
+            );
+            
+            // Categorize the skill
+            if (isTechnical || !isSoft) {
+                technicalSkills.push(skill);
+            } else {
+                softSkills.push(skill);
+            }
+        });
+        
+        return { technicalSkills, softSkills };
     };
 
     const submitHandler = async (e) => {
@@ -870,104 +932,119 @@ Google Professional Cloud Developer, 2022"
     };
 
     const renderPreview = () => {
-        // Helper to add bullet points if text doesn't have them
+        // Helper functions for bullets and project summary formatting
         const formatWithBullets = (text) => {
-            if (!text) return [];
-            
-            return text.split('\n')
-                .filter(line => line.trim())
-                .map(line => 
-                    line.trim().startsWith('•') || line.trim().startsWith('-') ? 
-                        line : `• ${line.trim()}`
-                );
+            return text.split('\n').map(line => {
+                if (line.trim().length === 0) return line;
+                return `• ${line.trim()}`;
+            });
         };
-        
-        // Helper to format project summary with proper indentation and bullets
+
         const formatProjectSummary = (summary) => {
-            if (!summary) return [];
-            
-            return summary.split('\n')
-                .filter(line => line.trim())
-                .map(line => {
-                    line = line.trim();
-                    if (line.startsWith('•') || line.startsWith('-')) {
-                        return line;
-                    }
-                    return `- ${line}`;
-                });
+            return summary.split('\n').map(line => {
+                if (line.trim().length === 0) return line;
+                return `  - ${line.trim()}`;
+            });
         };
+
+        // Use the shared categorizeSkills function
+        const { technicalSkills, softSkills } = categorizeSkills(skillsEntries);
         
         return (
-            <div className="space-y-4 text-white">
+            <div className="space-y-5 text-white">
                 <h3 className="text-xl font-bold border-b border-white/30 pb-2">Resume Preview</h3>
                 
                 {/* Header Section */}
-                <div className="bg-white/5 p-4 rounded-lg text-center">
-                    <h4 className="text-2xl font-bold">{name || "Your Name"}</h4>
-                    <p className="mt-1">{email || "email@example.com"} • {phone || "123-456-7890"}</p>
+                <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                    <h4 className="text-2xl font-bold text-center tracking-wide">{name || "Your Name"}</h4>
+                    <p className="text-center mt-2">{email || "email@example.com"} • {phone || "123-456-7890"}</p>
                     
-                    <div className="flex flex-wrap justify-center gap-3 mt-2 text-sm">
-                        {linkedin && <span>{linkedin}</span>}
-                        {github && <span>{github}</span>}
+                    <div className="flex flex-wrap justify-center gap-3 mt-2 text-sm text-white/90">
+                        {linkedin && <span className="flex items-center gap-1"><FaGithub className="text-xs" /> {linkedin}</span>}
+                        {github && <span className="flex items-center gap-1"><FaGithub className="text-xs" /> {github}</span>}
                         {address && <span>{address}</span>}
                     </div>
                 </div>
                 
                 {/* Professional Summary */}
-                <div className="bg-white/5 p-4 rounded-lg">
-                    <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">PROFESSIONAL SUMMARY</h4>
+                <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                    <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">PROFESSIONAL SUMMARY</h4>
                     {professionalSummary ? (
-                        <p>{professionalSummary}</p>
+                        <p className="leading-relaxed">{professionalSummary}</p>
                     ) : (
-                        <p className="italic text-white/70">A professional summary will be generated based on your skills and experience.</p>
+                        <p className="italic text-white/70 leading-relaxed">A professional summary will be generated based on your skills and experience.</p>
                     )}
                 </div>
                 
                 {/* Education Section */}
                 {educationEntries.some(entry => entry.degree.trim() || entry.institution.trim()) && (
-                    <div className="bg-white/5 p-4 rounded-lg">
-                        <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">EDUCATION</h4>
-                        <div className="space-y-3">
+                    <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                        <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">EDUCATION</h4>
+                        <div className="space-y-4">
                             {educationEntries
                                 .filter(entry => entry.degree.trim() && entry.institution.trim())
                                 .map((entry, index) => (
-                                <div key={index} className="mb-1 pl-4">
-                                    <p className="font-bold">• {entry.degree}</p>
-                                    <p className="ml-3">{entry.institution}</p>
-                                    <p className="text-sm ml-3 text-white/90">{entry.from} - {entry.to}</p>
-                                    {entry.gpa && <p className="text-sm ml-3 text-white/90">GPA: {entry.gpa}</p>}
+                                <div key={index} className="mb-2">
+                                    <div className="flex justify-between">
+                                        <div className="flex">
+                                            <span className="text-white/90 mr-2">•</span>
+                                            <p className="font-bold">{entry.degree}</p>
+                                        </div>
+                                        <p className="text-white/90">{entry.from} - {entry.to}</p>
+                                    </div>
+                                    <p className="ml-6">{entry.institution}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
                 )}
                 
-                {/* Skills Section */}
+                {/* Skills Section - Updated to separate Technical and Soft Skills */}
                 {skillsEntries.some(entry => entry.trim()) && (
-                    <div className="bg-white/5 p-4 rounded-lg">
-                        <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">SKILLS</h4>
-                        <div>
-                            {skillsEntries.map((entry, index) => (
-                                entry.trim() && (
-                                    <p key={index} className="whitespace-pre-line pl-4">
-                                        {entry.trim().startsWith('•') ? entry : `• ${entry}`}
-                                    </p>
-                                )
-                            ))}
-                        </div>
+                    <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                        <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">SKILLS</h4>
+                        
+                        {technicalSkills.length > 0 && (
+                            <div className="mb-4">
+                                <h5 className="text-base font-semibold text-white/90 mb-2 ml-1">Technical Skills</h5>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+                                    {technicalSkills.map((entry, index) => (
+                                        <div key={index} className="flex">
+                                            <span className="text-white/90 mr-2 min-w-[12px]">•</span>
+                                            <span>{entry.trim().startsWith('•') ? entry.trim().substring(1).trim() : entry.trim()}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                        
+                        {softSkills.length > 0 && (
+                            <div>
+                                <h5 className="text-base font-semibold text-white/90 mb-2 ml-1">Soft Skills</h5>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+                                    {softSkills.map((entry, index) => (
+                                        <div key={index} className="flex">
+                                            <span className="text-white/90 mr-2 min-w-[12px]">•</span>
+                                            <span>{entry.trim().startsWith('•') ? entry.trim().substring(1).trim() : entry.trim()}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
                 
                 {/* Experience Section */}
                 {experienceEntries.some(entry => entry.trim()) && (
-                    <div className="bg-white/5 p-4 rounded-lg">
-                        <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">EXPERIENCE</h4>
+                    <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                        <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">EXPERIENCE</h4>
                         <div className="space-y-2">
                             {experienceEntries.map((entry, index) => (
                                 entry.trim() && (
-                                    <p key={index} className="whitespace-pre-line pl-4">
-                                        {entry.trim().startsWith('•') ? entry : `• ${entry}`}
-                                    </p>
+                                    <div key={index} className="flex">
+                                        <span className="text-white/90 mr-2 min-w-[12px]">•</span>
+                                        <span className="flex-1">{entry.trim().startsWith('•') ? entry.trim().substring(1).trim() : entry.trim()}</span>
+                                    </div>
                                 )
                             ))}
                         </div>
@@ -976,26 +1053,34 @@ Google Professional Cloud Developer, 2022"
                 
                 {/* Projects Section */}
                 {projectEntries.some(entry => entry.title.trim()) && (
-                    <div className="bg-white/5 p-4 rounded-lg">
-                        <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">PROJECTS</h4>
+                    <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                        <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">PROJECTS</h4>
                         <div className="space-y-4">
                             {projectEntries
                                 .filter(entry => entry.title.trim())
                                 .map((entry, index) => (
-                                    <div key={index} className="ml-4">
-                                        <p className="font-bold">• {entry.title}</p>
-                                        
-                                        {/* Summary with bullet points */}
-                                        <div className="ml-5 mt-1">
-                                            {formatProjectSummary(entry.summary).map((line, idx) => (
-                                                <p key={idx} className="text-white/90">{line}</p>
-                                            ))}
+                                    <div key={index} className="mb-3">
+                                        <div className="flex">
+                                            <span className="text-white/90 mr-2 min-w-[12px]">•</span>
+                                            <p className="font-bold">{entry.title}</p>
                                         </div>
                                         
-                                        {/* Links */}
+                                        {/* Summary with bullet points */}
+                                        {entry.summary.trim() && (
+                                            <div className="ml-6 mt-1 space-y-1">
+                                                {formatProjectSummary(entry.summary).map((line, idx) => (
+                                                    <div key={idx} className="flex text-white/90">
+                                                        <span className="mr-2 min-w-[12px]">{line.startsWith('-') ? '-' : '•'}</span>
+                                                        <span className="flex-1">{line.startsWith('-') || line.startsWith('•') ? 
+                                                            line.substring(1).trim() : line}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                        
+                                        {/* Links - Better organized */}
                                         {(entry.liveLink || entry.githubLink) && (
-                                            <div className="ml-5 mt-1 text-sm text-white/80 flex flex-wrap gap-2">
-                                                <span className="font-medium">Links:</span>
+                                            <div className="ml-6 mt-1 text-sm text-white/80 flex flex-wrap gap-4">
                                                 {entry.liveLink && (
                                                     <span className="flex items-center gap-1">
                                                         <FaLink className="text-xs" /> {entry.liveLink}
@@ -1017,11 +1102,14 @@ Google Professional Cloud Developer, 2022"
                 
                 {/* Certifications Section */}
                 {certifications && (
-                    <div className="bg-white/5 p-4 rounded-lg">
-                        <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">CERTIFICATIONS</h4>
-                        <div className="space-y-1">
+                    <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                        <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">CERTIFICATIONS</h4>
+                        <div className="space-y-2">
                             {formatWithBullets(certifications).map((line, idx) => (
-                                <p key={idx} className="whitespace-pre-line pl-4">{line}</p>
+                                <div key={idx} className="flex">
+                                    <span className="text-white/90 mr-2 min-w-[12px]">•</span>
+                                    <span>{line.trim().startsWith('•') ? line.trim().substring(1).trim() : line.trim()}</span>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -1029,11 +1117,14 @@ Google Professional Cloud Developer, 2022"
                 
                 {/* Achievements Section */}
                 {achievements && (
-                    <div className="bg-white/5 p-4 rounded-lg">
-                        <h4 className="text-lg font-bold border-b border-white/30 pb-1 mb-2">ACHIEVEMENTS</h4>
-                        <div className="space-y-1">
+                    <div className="bg-white/5 p-5 rounded-lg shadow-inner">
+                        <h4 className="text-lg font-bold border-b border-white/30 pb-2 mb-3">ACHIEVEMENTS</h4>
+                        <div className="space-y-2">
                             {formatWithBullets(achievements).map((line, idx) => (
-                                <p key={idx} className="whitespace-pre-line pl-4">{line}</p>
+                                <div key={idx} className="flex">
+                                    <span className="text-white/90 mr-2 min-w-[12px]">•</span>
+                                    <span className="flex-1">{line.trim().startsWith('•') ? line.trim().substring(1).trim() : line.trim()}</span>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -1129,28 +1220,23 @@ Google Professional Cloud Developer, 2022"
         
         return (
             <div className="bg-white text-gray-800 p-6 rounded-lg shadow-inner h-full overflow-y-auto">
-                {sections.header && (
-                    <div className="text-center mb-6 pb-2 border-b-2 border-gray-300">
-                        <h1 className="text-2xl font-bold text-gray-900">{sections.header.name}</h1>
-                        <p className="text-gray-600">{sections.header.contact}</p>
-                        {sections.header.additionalContact && (
-                            <p className="text-gray-600">{sections.header.additionalContact}</p>
-                        )}
-                    </div>
-                )}
-                
                 {Object.entries(sections.content).map(([title, content], index) => (
                     <div key={index} className="mb-5">
                         <h2 className="text-lg font-bold text-gray-900 uppercase mb-2 pb-1 border-b border-gray-300">
                             {title}
                         </h2>
+                        
                         <div className="pl-2">
                             {content.map((item, i) => (
                                 <div key={i} className="mb-2">
                                     {item.trim().startsWith('•') ? (
                                         <p className="ml-4 text-gray-700">{item}</p>
+                                    ) : item.trim().startsWith('GPA:') ? (
+                                        <p className="ml-6 text-gray-700">{item}</p>
                                     ) : (
-                                        <p className="text-gray-700">{item}</p>
+                                        <p className={item.trim().startsWith('  ') ? "ml-6 text-gray-700" : "text-gray-700"}>
+                                            {item}
+                                        </p>
                                     )}
                                 </div>
                             ))}
@@ -1188,8 +1274,10 @@ Google Professional Cloud Developer, 2022"
         let currentSection = '';
         
         for (const line of lines) {
-            // Section headers are in ALL CAPS
-            if (line === line.toUpperCase() && line.length > 2 && !line.includes('•') && !line.includes('|')) {
+            // Section headers are in ALL CAPS, but ignore years in parentheses
+            if (line === line.toUpperCase() && line.length > 2 && 
+                !line.includes('•') && !line.includes('|') && 
+                !line.includes('(') && !line.includes(')')) {
                 currentSection = line.trim();
                 result.content[currentSection] = [];
             } else if (currentSection) {

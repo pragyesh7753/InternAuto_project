@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
-function CareerForm({ onClose }) {
+function CareerForm({ onClose, showResumeForm }) {
 
     const [goal, setGoal] = useState("");
     const [education, setEducation] = useState("");
@@ -61,6 +61,11 @@ function CareerForm({ onClose }) {
 
     };
 
+    const handleResumeButtonClick = () => {
+        onClose();
+        showResumeForm();
+    };
+
     return (
         <div className="bg-gradient-to-br from-yellow-400/95 to-red-600/95 backdrop-blur-lg rounded-xl p-4 sm:p-6 w-[95%] max-w-[600px] max-h-[85vh] relative shadow-2xl border border-white/20 animate-fadeIn overflow-hidden flex flex-col">
             <button
@@ -86,13 +91,30 @@ function CareerForm({ onClose }) {
                         <div className="bg-white/5 p-3 rounded-lg mt-4 overflow-y-auto max-h-[45vh]">
                             <p className="whitespace-pre-line leading-relaxed text-sm sm:text-base">{suggestion}</p>
                         </div>
+                        
+                        <div className="mt-4 bg-white/10 p-3 rounded-lg border border-white/30">
+                            <h4 className="font-semibold text-white">Ready to take the next step?</h4>
+                            <p className="text-white/80 text-sm mt-1">Build a professional resume to highlight the skills and qualifications mentioned above.</p>
+                        </div>
                     </div>
-                    <button
-                        onClick={() => setSuggestion("")}
-                        className="mt-4 bg-white text-red-500 hover:bg-white/90 text-sm sm:text-base py-2 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-white/25 w-full"
-                    >
-                        Back to Form
-                    </button>
+                    
+                    <div className="flex gap-3 mt-4">
+                        <button
+                            onClick={() => setSuggestion("")}
+                            className="flex-1 bg-white/20 text-white hover:bg-white/30 py-2 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105"
+                        >
+                            Back to Form
+                        </button>
+                        <button
+                            onClick={handleResumeButtonClick}
+                            className="flex-1 bg-white text-red-500 hover:bg-white/90 text-sm sm:text-base py-2 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-white/25 flex items-center justify-center gap-2"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Build Resume Now
+                        </button>
+                    </div>
                 </div>
             ) : (
                 <form onSubmit={submitHandler} className='flex flex-col gap-2 sm:gap-3 overflow-y-auto pr-1 flex-1'>
@@ -157,6 +179,7 @@ function CareerForm({ onClose }) {
                     </div>
 
                     <button
+                        type="submit"
                         className='mt-3 sm:mt-4 bg-white text-red-500 hover:bg-white/90 text-sm sm:text-base py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-white/25 flex justify-center items-center gap-2'
                         disabled={isLoading}
                     >
