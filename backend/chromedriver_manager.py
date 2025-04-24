@@ -74,14 +74,47 @@ def prepare_environment():
     
     # Try to find Chrome binary path
     try:
-        import os
-        import platform
-        from internshala_auto import InternshalaAutomation
-        dummy_instance = InternshalaAutomation.__new__(InternshalaAutomation)
-        chrome_path = dummy_instance.find_chrome_executable()
+        chrome_path = None
+        # First try to find Chrome directly without initializing the full class
+        if platform.system() == "Windows":
+            possible_paths = [
+                os.path.join(os.environ.get('PROGRAMFILES', 'C:\\Program Files'), 'Google\\Chrome\\Application\\chrome.exe'),
+                os.path.join(os.environ.get('PROGRAMFILES(X86)', 'C:\\Program Files (x86)'), 'Google\\Chrome\\Application\\chrome.exe'),
+                os.path.join(os.environ.get('LOCALAPPDATA', ''), 'Google\\Chrome\\Application\\chrome.exe')
+            ]
+            for path in possible_paths:
+                if os.path.exists(path):
+                    chrome_path = path
+                    break
+        elif platform.system() == "Darwin":  # macOS
+            possible_paths = [
+                "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+                "/Applications/Chrome.app/Contents/MacOS/Chrome",
+            ]
+            for path in possible_paths:
+                if os.path.exists(path):
+                    chrome_path = path
+                    break
+        elif platform.system() == "Linux":
+            possible_paths = [
+                "/usr/bin/google-chrome",
+                "/usr/bin/chromium",
+                "/usr/bin/chromium-browser",
+                "/usr/bin/chrome",
+                "/snap/bin/chromium",
+            ]
+            for path in possible_paths:
+                if os.path.exists(path):
+                    chrome_path = path
+                    break
+                    
+        # If found, set the environment variable
         if chrome_path and isinstance(chrome_path, str) and os.path.exists(chrome_path):
             os.environ['CHROME_BINARY_PATH'] = chrome_path
             logger.info(f"Setting Chrome binary path: {chrome_path}")
+        else:
+            logger.warning("Could not find Chrome binary automatically")
+            
     except Exception as e:
         logger.warning(f"Could not set Chrome binary path: {str(e)}")
     

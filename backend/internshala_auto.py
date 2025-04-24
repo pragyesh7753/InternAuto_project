@@ -95,14 +95,15 @@ class InternshalaAutomation:
             if chrome_binary:
                 logger.info(f"Automatically found Chrome binary at: {chrome_binary}")
         
-        # Only set binary_location if a valid, non-empty string path was found
-        if isinstance(chrome_binary, str) and chrome_binary.strip() and os.path.exists(chrome_binary):
-            self.chrome_options.binary_location = chrome_binary
-            logger.info(f"Setting Chrome binary location to: {chrome_binary}")
-        elif chrome_binary is not None and not isinstance(chrome_binary, str):
-            logger.warning(f"Chrome binary path is not a string: {chrome_binary!r} (type: {type(chrome_binary)}) - skipping setting binary_location")
+        # Only set binary_location if a valid string path was found
+        if chrome_binary and isinstance(chrome_binary, str):
+            if os.path.exists(chrome_binary):
+                self.chrome_options.binary_location = chrome_binary
+                logger.info(f"Setting Chrome binary location to: {chrome_binary}")
+            else:
+                logger.warning(f"Chrome binary path does not exist: {chrome_binary} - using system default")
         else:
-            logger.info(f"No valid Chrome binary path set (value: {chrome_binary!r}) - using system default")
+            logger.info("No Chrome binary path set - using system default")
         
         # Initialize WebDriver with service object to handle path issues
         try:

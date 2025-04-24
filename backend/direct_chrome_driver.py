@@ -75,26 +75,42 @@ def start_chrome_session():
         chrome_binary = os.environ.get('CHROME_BINARY_PATH')
         if not chrome_binary:
             chrome_binary = find_chrome_executable()
+            if chrome_binary:
+                logger.info(f"Automatically found Chrome binary at: {chrome_binary}")
         
-        # Only set binary_location if a valid, non-empty string path was found
-        if isinstance(chrome_binary, str) and chrome_binary and os.path.exists(chrome_binary):
-            logger.info(f"Setting Chrome binary path to: {chrome_binary}")
-            options.binary_location = chrome_binary
+        # Only set binary_location if a valid string path was found
+        if chrome_binary and isinstance(chrome_binary, str):
+            if os.path.exists(chrome_binary):
+                options.binary_location = chrome_binary
+                logger.info(f"Setting Chrome binary path to: {chrome_binary}")
+            else:
+                logger.warning(f"Chrome binary path does not exist: {chrome_binary} - using system default")
         else:
-            logger.info(f"No valid Chrome binary path set (value: {chrome_binary!r}) - using system default")
+            logger.info("No Chrome binary path set - using system default")
         
         # Create Chrome WebDriver service
-        service = Service(ChromeDriverManager().install())
-        
-        # Create WebDriver instance without specifying binary location if not found
-        driver = webdriver.Chrome(service=service, options=options)
-        
-        # Hide automation flags
-        driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        
-        logger.info("Direct Chrome WebDriver session initialized successfully")
-        return driver
-        
+        try:
+            service = Service(ChromeDriverManager().install())
+            
+            # Create WebDriver instance
+            driver = webdriver.Chrome(service=service, options=options)
+            
+            # Hide automation flags
+            driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+            
+            logger.info("Direct Chrome WebDriver session initialized successfully")
+            return driver
+        except Exception as e:
+            logger.error(f"Failed to create Chrome service: {str(e)}")
+            # Try without specifying binary location as a last resort
+            options = webdriver.ChromeOptions()
+            options.add_argument("--disable-blink-features=AutomationControlled")
+            options.add_argument("--no-sandbox")
+            service = Service(ChromeDriverManager().install())
+            driver = webdriver.Chrome(service=service, options=options)
+            logger.info("Fallback Chrome WebDriver session initialized with minimal options")
+            return driver
+            
     except Exception as e:
         logger.error(f"Failed to initialize direct Chrome WebDriver: {str(e)}")
         return None
