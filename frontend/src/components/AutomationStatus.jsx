@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FaArrowLeft, FaCheck, FaExclamationTriangle, FaSpinner, FaInfoCircle } from 'react-icons/fa';
+import React, { useState, useEffect, useCallback } from 'react';
+import { FaArrowLeft, FaCheck, FaExclamationTriangle, FaSpinner, FaInfoCircle, FaRedo } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { InternshalaAPI } from '../api';
 
@@ -7,34 +7,23 @@ const AutomationStatus = ({ jobId, onBack }) => {
     const [status, setStatus] = useState('running');
     const [messages, setMessages] = useState([]);
     const [error, setError] = useState(null);
+    const [isRetrying, setIsRetrying] = useState(false);
+    const [connectionLost, setConnectionLost] = useState(false);
     const messagesEndRef = React.useRef(null);
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    useEffect(() => {
+    // Use useCallback to prevent unnecessary re-renders
+    const checkStatus = useCallback(async () => {
         if (!jobId) {
             setError("No job ID provided");
             return;
         }
         
-        // Check status immediately then poll every 2 seconds
-        checkStatus();
-        const intervalId = setInterval(checkStatus, 2000);
-        
-        // Clean up interval on unmount
-        return () => clearInterval(intervalId);
-    }, [jobId]);
-    
-    useEffect(() => {
-        scrollToBottom();
-    }, [messages]);
-
-    const checkStatus = async () => {
-        if (!jobId) return;
-        
         try {
+            setConnectionLost(false);
             const data = await InternshalaAPI.checkStatus(jobId);
             
             if (data.success) {
@@ -86,7 +75,35 @@ const AutomationStatus = ({ jobId, onBack }) => {
             }
         } catch (err) {
             console.error('Error checking job status:', err);
-            setError(err.message || "Network error");
+            setConnectionLost(true);
+            setError("Connection lost. Will retry automatically.");
+        }
+    }, [jobId, status]);
+
+    useEffect(() => {
+        if (!jobId) {
+            return;
+        }
+        
+        // Check status immediately then poll every 2 seconds
+        checkStatus();
+        const intervalId = setInterval(checkStatus, 2000);
+        
+        // Clean up interval on unmount
+        return () => clearInterval(intervalId);
+    }, [jobId, checkStatus]);
+    
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const handleRetry = async () => {
+        setIsRetrying(true);
+        try {
+            await checkStatus();
+            setIsRetrying(false);
+        } catch (error) {
+            setIsRetrying(false);
         }
     };
 
@@ -95,18 +112,18 @@ const AutomationStatus = ({ jobId, onBack }) => {
             case 'running':
                 return <FaSpinner className="animate-spin text-yellow-300" />;
             case 'completed':
-                return <FaCheck className="text-green-400" />;
+                return <FaCheck className="text-green-300" />;
             case 'failed':
-                return <FaExclamationTriangle className="text-red-400" />;
+                return <FaExclamationTriangle className="text-red-300" />;
             default:
-                return <FaInfoCircle className="text-blue-400" />;
+                return <FaInfoCircle className="text-blue-300" />;
         }
     };
 
     const getStatusText = () => {
         switch (status) {
             case 'running':
-                return 'Running';
+                return 'Running...';
             case 'completed':
                 return 'Completed';
             case 'failed':
@@ -117,15 +134,17 @@ const AutomationStatus = ({ jobId, onBack }) => {
     };
 
     const getMessageClassName = (level) => {
-        switch (level) {
-            case 'ERROR':
-                return 'text-red-300';
-            case 'WARNING':
-                return 'text-yellow-300';
-            case 'INFO':
-                return 'text-white';
+        switch (level?.toLowerCase()) {
+            case 'info':
+                return 'text-blue-400';
+            case 'warning':
+                return 'text-yellow-400';
+            case 'error':
+                return 'text-red-400';
+            case 'success':
+                return 'text-green-400';
             default:
-                return 'text-gray-300';
+                return 'text-white';
         }
     };
 
@@ -153,10 +172,19 @@ const AutomationStatus = ({ jobId, onBack }) => {
             {error && (
                 <div className="bg-red-500/30 border border-red-500 text-white p-3 sm:p-4 rounded-lg mb-4 text-sm">
                     {error}
+                    {connectionLost && (
+                        <button 
+                            onClick={handleRetry}
+                            className="ml-3 bg-white/20 hover:bg-white/30 px-2 py-1 rounded text-xs flex items-center gap-1"
+                            disabled={isRetrying}
+                        >
+                            {isRetrying ? <FaSpinner className="animate-spin" /> : <FaRedo />} Retry Now
+                        </button>
+                    )}
                 </div>
             )}
             
-            <div className="bg-black/40 rounded-lg p-3 sm:p-4 h-[250px] sm:h-[300px] overflow-auto mb-4">
+            <div className="bg-black/40 rounded-lg p-3 sm:p-4 h-[250px] sm:h-[300px] overflow-auto mb-4 custom-scrollbar">
                 <h3 className="text-white/90 font-semibold mb-2 text-sm sm:text-base">Progress Log:</h3>
                 {messages.length === 0 ? (
                     <p className="text-white/50 italic text-xs sm:text-sm">Waiting for messages...</p>

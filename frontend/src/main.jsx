@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import App from './App.jsx'
 import './index.css'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -15,11 +16,13 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-      <BrowserRouter>
-        <App />
-        <Toaster position="top-center" />
-      </BrowserRouter>
-    </ClerkProvider>
+    <ErrorBoundary>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <BrowserRouter>
+          <App />
+          <Toaster position="top-center" />
+        </BrowserRouter>
+      </ClerkProvider>
+    </ErrorBoundary>
   </StrictMode>,
 )

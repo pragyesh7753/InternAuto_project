@@ -2,7 +2,11 @@
  * API client for the Internshala automation backend
  */
 
-const API_BASE_URL = 'https://internauto-project.onrender.com/api';
+// Use environment variable with fallback to production URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://internauto-project.onrender.com/api';
+
+// Add a backup API URL for fallback
+const BACKUP_API_URL = 'https://internauto-backup.onrender.com/api';
 
 /**
  * Helper function to handle API responses
@@ -17,6 +21,28 @@ const handleResponse = async (response) => {
   return response.json();
 };
 
+/**
+ * Attempts to fetch data from the primary API, falls back to backup if needed
+ * @param {string} endpoint - API endpoint
+ * @param {object} options - Fetch options
+ * @returns {Promise<Object>} Response data
+ */
+const fetchWithFallback = async (endpoint, options) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+    return await handleResponse(response);
+  } catch (error) {
+    console.warn(`Primary API failed: ${error.message}. Trying backup...`);
+    try {
+      const backupResponse = await fetch(`${BACKUP_API_URL}${endpoint}`, options);
+      return await handleResponse(backupResponse);
+    } catch (backupError) {
+      console.error('Backup API also failed:', backupError);
+      throw new Error(`API unavailable: ${error.message}`);
+    }
+  }
+};
+
 export const InternshalaAPI = {
   /**
    * Start an automation job
@@ -29,15 +55,13 @@ export const InternshalaAPI = {
    */
   startAutomation: async (params) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/run`, {
+      return await fetchWithFallback('/run', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(params),
       });
-
-      return handleResponse(response);
     } catch (error) {
       console.error('API Error:', error);
       throw error;
@@ -51,11 +75,9 @@ export const InternshalaAPI = {
    */
   checkStatus: async (jobId) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/status/${jobId}`, {
+      return await fetchWithFallback(`/status/${jobId}`, {
         method: 'GET',
       });
-
-      return handleResponse(response);
     } catch (error) {
       console.error('API Error:', error);
       throw error;
@@ -68,11 +90,9 @@ export const InternshalaAPI = {
    */
   healthCheck: async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/health`, {
+      const data = await fetchWithFallback('/health', {
         method: 'GET',
       });
-
-      const data = await handleResponse(response);
       return data.status === 'ok';
     } catch (error) {
       console.error('API Health Check Error:', error);
@@ -92,15 +112,13 @@ export const InternshalaAPI = {
    */
   getCareerSuggestion: async (params) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/career_suggestion`, {
+      return await fetchWithFallback('/career_suggestion', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(params),
       });
-
-      return handleResponse(response);
     } catch (error) {
       console.error('API Error:', error);
       throw error;
@@ -114,15 +132,13 @@ export const InternshalaAPI = {
    */
   generateResume: async (resumeData) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/generate_resume`, {
+      return await fetchWithFallback('/generate_resume', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(resumeData),
       });
-
-      return handleResponse(response);
     } catch (error) {
       console.error('Resume Generation Error:', error);
       throw error;
