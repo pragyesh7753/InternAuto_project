@@ -86,6 +86,7 @@ def prepare_environment():
                 if os.path.exists(path):
                     chrome_path = path
                     break
+        
         elif platform.system() == "Darwin":  # macOS
             possible_paths = [
                 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
@@ -95,6 +96,7 @@ def prepare_environment():
                 if os.path.exists(path):
                     chrome_path = path
                     break
+                    
         elif platform.system() == "Linux":
             possible_paths = [
                 "/usr/bin/google-chrome",
@@ -113,7 +115,7 @@ def prepare_environment():
             os.environ['CHROME_BINARY_PATH'] = chrome_path
             logger.info(f"Setting Chrome binary path: {chrome_path}")
         else:
-            logger.warning("Could not find Chrome binary automatically")
+            logger.warning("Could not find valid Chrome binary automatically")
             
     except Exception as e:
         logger.warning(f"Could not set Chrome binary path: {str(e)}")
