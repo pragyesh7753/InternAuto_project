@@ -6785,3 +6785,65 @@ Stacktrace:
 2025-04-24 12:10:55,753 - INFO - 127.0.0.1 - - [24/Apr/2025 12:10:55] "OPTIONS /api/run HTTP/1.1" 200 -
 2025-04-24 12:11:04,398 - INFO - 127.0.0.1 - - [24/Apr/2025 12:11:04] "OPTIONS /api/run HTTP/1.1" 200 -
 2025-04-24 12:13:24,187 - INFO - 127.0.0.1 - - [24/Apr/2025 12:13:24] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-25 22:57:55,954 - INFO - Gemini API initialized successfully
+2025-04-25 22:57:55,965 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-25 22:57:55,965 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-25 22:57:56,041 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.235.28:5000
+2025-04-25 22:57:56,042 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 22:58:24,765 - INFO - Gemini API initialized successfully
+2025-04-25 22:58:24,775 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-25 22:58:24,776 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-25 22:58:24,805 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.235.28:5000
+2025-04-25 22:58:24,807 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-25 22:58:24,966 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:24] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:26,409 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:26] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:28,029 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:28] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:29,468 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:29] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:29,768 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:29] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:31,173 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:31] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:31,762 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:31] "[33mGET /status/a00c68b3-c7b5-407d-851c-8350e1cab34d HTTP/1.1[0m" 404 -
+2025-04-25 22:58:34,720 - INFO - 127.0.0.1 - - [25/Apr/2025 22:58:34] "[33mOPTIONS /run HTTP/1.1[0m" 404 -
+2025-04-25 22:59:00,219 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:00] "[33mOPTIONS /run HTTP/1.1[0m" 404 -
+2025-04-25 22:59:37,973 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:37] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-25 22:59:37,991 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:37] "POST /api/run HTTP/1.1" 200 -
+2025-04-25 22:59:37,992 - INFO - Automatically found Chrome binary at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-04-25 22:59:37,998 - INFO - Setting Chrome binary location to: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-04-25 22:59:38,150 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:38] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:38,163 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:38] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:40,079 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:40] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:42,078 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:42] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:44,078 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:44] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:44,304 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-25 22:59:46,278 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:46] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:48,084 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:48] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:48,279 - INFO - WebDriver initialized successfully
+2025-04-25 22:59:48,280 - INFO - Navigating to Internshala login page
+2025-04-25 22:59:50,269 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:50] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:52,207 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:52] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:54,226 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:54] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:56,202 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:56] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 22:59:58,205 - INFO - 127.0.0.1 - - [25/Apr/2025 22:59:58] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:00,198 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:00] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:02,198 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:02] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:04,334 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:04] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:06,218 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:06] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:08,213 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:08] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:10,199 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:10] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:12,203 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:12] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:14,209 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:14] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:16,212 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:16] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:17,282 - ERROR - Still on login page after submission - credentials likely incorrect
+2025-04-25 23:00:17,282 - ERROR - Login failed, cannot proceed
+2025-04-25 23:00:18,082 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:18] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:18,133 - INFO - Browser session closed
+2025-04-25 23:00:20,080 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:20] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:20,133 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:20] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:22,127 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:22] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:24,126 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:24] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-25 23:00:26,123 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:26] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
