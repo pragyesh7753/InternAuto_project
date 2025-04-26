@@ -6847,3 +6847,287 @@ Stacktrace:
 2025-04-25 23:00:22,127 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:22] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
 2025-04-25 23:00:24,126 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:24] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
 2025-04-25 23:00:26,123 - INFO - 127.0.0.1 - - [25/Apr/2025 23:00:26] "GET /api/status/412cdaaa-78aa-429b-977d-6040b36914ee HTTP/1.1" 200 -
+2025-04-26 00:44:08,540 - INFO - Gemini API initialized successfully
+2025-04-26 00:44:08,549 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-26 00:44:08,550 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-26 00:44:08,622 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.235.28:5000
+2025-04-26 00:44:08,623 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-26 00:44:12,890 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:12] "OPTIONS /api/run HTTP/1.1" 200 -
+2025-04-26 00:44:12,919 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:12] "POST /api/run HTTP/1.1" 200 -
+2025-04-26 00:44:12,920 - INFO - Automatically found Chrome binary at: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-04-26 00:44:12,923 - INFO - Setting Chrome binary location to: C:\Program Files\Google\Chrome\Application\chrome.exe
+2025-04-26 00:44:13,089 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:13] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:13,109 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:13] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:14,981 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:14] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:16,368 - INFO - patching driver executable C:\Users\sprag\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-26 00:44:16,990 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:16] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:19,038 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:19] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:19,072 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:19] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:19,990 - INFO - WebDriver initialized successfully
+2025-04-26 00:44:19,991 - INFO - Navigating to Internshala login page
+2025-04-26 00:44:20,988 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:20] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:23,071 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:23] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:24,987 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:24] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:25,152 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:25] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:26,985 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:26] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:29,347 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:29] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:31,206 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:31] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:31,212 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:31] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:33,217 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:35,216 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:35] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:37,210 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:37] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:37,216 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:37] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:39,217 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:39] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:41,237 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:41] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:43,223 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:43] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:43,233 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:43] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:45,216 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:45] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:47,237 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:47] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:47,934 - INFO - Successfully logged in
+2025-04-26 00:44:47,934 - INFO - Navigating to profile page to extract preferences
+2025-04-26 00:44:49,216 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:49] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:49,220 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:49] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:51,213 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:51] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:53,224 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:53] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:55,207 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:55] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:55,213 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:55] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:57,211 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:57] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:44:59,218 - INFO - 127.0.0.1 - - [26/Apr/2025 00:44:59] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:01,209 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:01] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:01,216 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:01] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:03,236 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:03] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:03,737 - WARNING - Could not extract skills: Message: 
+Stacktrace:
+	GetHandleVerifier [0x0065D363+60275]
+	GetHandleVerifier [0x0065D3A4+60340]
+	(No symbol) [0x004906F3]
+	(No symbol) [0x004D8690]
+	(No symbol) [0x004D8A2B]
+	(No symbol) [0x00520EE2]
+	(No symbol) [0x004FD0D4]
+	(No symbol) [0x0051E6EB]
+	(No symbol) [0x004FCE86]
+	(No symbol) [0x004CC623]
+	(No symbol) [0x004CD474]
+	GetHandleVerifier [0x008A8FE3+2467827]
+	GetHandleVerifier [0x008A45E6+2448886]
+	GetHandleVerifier [0x008BF80C+2560028]
+	GetHandleVerifier [0x00673DF5+153093]
+	GetHandleVerifier [0x0067A3BD+179149]
+	GetHandleVerifier [0x00664BB8+91080]
+	GetHandleVerifier [0x00664D60+91504]
+	GetHandleVerifier [0x0064FA10+4640]
+	BaseThreadInitThunk [0x769E5D49+25]
+	RtlInitializeExceptionChain [0x7781CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x7781CE91+561]
+
+2025-04-26 00:45:05,208 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:05] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:07,201 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:07] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:07,205 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:07] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:08,702 - INFO - Extracted 0 preferred locations
+2025-04-26 00:45:08,740 - INFO - Extracted 0 preferred categories
+2025-04-26 00:45:08,775 - WARNING - Could not extract work from home preference: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//label[contains(text(), 'work from home')]"}
+  (Session info: chrome=135.0.7049.115); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0065D363+60275]
+	GetHandleVerifier [0x0065D3A4+60340]
+	(No symbol) [0x004906F3]
+	(No symbol) [0x004D8690]
+	(No symbol) [0x004D8A2B]
+	(No symbol) [0x00520EE2]
+	(No symbol) [0x004FD0D4]
+	(No symbol) [0x0051E6EB]
+	(No symbol) [0x004FCE86]
+	(No symbol) [0x004CC623]
+	(No symbol) [0x004CD474]
+	GetHandleVerifier [0x008A8FE3+2467827]
+	GetHandleVerifier [0x008A45E6+2448886]
+	GetHandleVerifier [0x008BF80C+2560028]
+	GetHandleVerifier [0x00673DF5+153093]
+	GetHandleVerifier [0x0067A3BD+179149]
+	GetHandleVerifier [0x00664BB8+91080]
+	GetHandleVerifier [0x00664D60+91504]
+	GetHandleVerifier [0x0064FA10+4640]
+	BaseThreadInitThunk [0x769E5D49+25]
+	RtlInitializeExceptionChain [0x7781CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x7781CE91+561]
+
+2025-04-26 00:45:08,776 - INFO - Successfully extracted preferences from profile
+2025-04-26 00:45:08,776 - INFO - Navigating to internships page
+2025-04-26 00:45:09,207 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:09] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:11,220 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:11] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:13,220 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:13] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:13,232 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:13] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:15,218 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:15] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:16,483 - INFO - Applying internship filters
+2025-04-26 00:45:17,225 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:17] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:19,210 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:19] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:19,214 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:19] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:21,207 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:21] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:23,242 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:23] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:25,209 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:25] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:25,214 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:25] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:26,520 - ERROR - Error applying filters: Message: 
+
+2025-04-26 00:45:26,627 - INFO - Found 41 internship listings
+2025-04-26 00:45:26,663 - WARNING - Error processing internship listing 0: Message: no such element: Unable to locate element: {"method":"xpath","selector":".//a[contains(@class, 'job-title-href')]"}
+  (Session info: chrome=135.0.7049.115); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+	GetHandleVerifier [0x0065D363+60275]
+	GetHandleVerifier [0x0065D3A4+60340]
+	(No symbol) [0x004906F3]
+	(No symbol) [0x004D8690]
+	(No symbol) [0x004D8A2B]
+	(No symbol) [0x004CDDD1]
+	(No symbol) [0x004FD0D4]
+	(No symbol) [0x004CDCF4]
+	(No symbol) [0x004FD304]
+	(No symbol) [0x0051E6EB]
+	(No symbol) [0x004FCE86]
+	(No symbol) [0x004CC623]
+	(No symbol) [0x004CD474]
+	GetHandleVerifier [0x008A8FE3+2467827]
+	GetHandleVerifier [0x008A45E6+2448886]
+	GetHandleVerifier [0x008BF80C+2560028]
+	GetHandleVerifier [0x00673DF5+153093]
+	GetHandleVerifier [0x0067A3BD+179149]
+	GetHandleVerifier [0x00664BB8+91080]
+	GetHandleVerifier [0x00664D60+91504]
+	GetHandleVerifier [0x0064FA10+4640]
+	BaseThreadInitThunk [0x769E5D49+25]
+	RtlInitializeExceptionChain [0x7781CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x7781CE91+561]
+
+2025-04-26 00:45:26,944 - INFO - Found suitable internship: Trainee - AI Content Creation (Short Form) at Physics Wallah
+2025-04-26 00:45:27,084 - INFO - Found suitable internship: RPA UiPath Engineering at NatWest Group
+Actively hiring
+2025-04-26 00:45:27,185 - INFO - Found suitable internship: System Analyst at Hungama Digital Media Entertainment Private Limited
+Actively hiring
+2025-04-26 00:45:27,377 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:27] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:27,411 - INFO - Found suitable internship: Angular.js Development at TeamLease Regtech
+2025-04-26 00:45:27,535 - INFO - Found suitable internship: Video Editor/Motion Designer at 603 The CoWorking Space India
+2025-04-26 00:45:27,657 - INFO - Found suitable internship: Software Development Engineer I, Amazon University Talent Acquisition at Amazon
+2025-04-26 00:45:27,787 - INFO - Found suitable internship: Software Development Engineer I – Amazon University Talent Acquisition at Amazon
+2025-04-26 00:45:27,936 - INFO - Found suitable internship: Software Development Engineer I, Amazon University Talent Acquisition at Amazon
+2025-04-26 00:45:28,253 - INFO - Found suitable internship: Full Stack Development at Rentkar-Switch To Share
+Actively hiring
+2025-04-26 00:45:28,253 - INFO - Found 9 suitable internships
+2025-04-26 00:45:28,254 - INFO - Attempting to apply for Trainee - AI Content Creation (Short Form) at Physics Wallah
+2025-04-26 00:45:33,215 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:33] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:33,224 - INFO - 127.0.0.1 - - [26/Apr/2025 00:45:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:45:35,304 - INFO - Clicking apply button for Trainee - AI Content Creation (Short Form)
+2025-04-26 00:45:42,739 - INFO - No 'Proceed to Application' button found, might be already on application form
+2025-04-26 00:45:42,932 - INFO - Application form found
+2025-04-26 00:45:43,004 - INFO - Using 1 generic textareas found on application form
+2025-04-26 00:45:44,918 - WARNING - Could not fill field: Message: element not interactable
+  (Session info: chrome=135.0.7049.115)
+Stacktrace:
+	GetHandleVerifier [0x0065D363+60275]
+	GetHandleVerifier [0x0065D3A4+60340]
+	(No symbol) [0x0049056E]
+	(No symbol) [0x004CFC83]
+	(No symbol) [0x004FD08C]
+	(No symbol) [0x004CDCF4]
+	(No symbol) [0x004FD304]
+	(No symbol) [0x0051E6EB]
+	(No symbol) [0x004FCE86]
+	(No symbol) [0x004CC623]
+	(No symbol) [0x004CD474]
+	GetHandleVerifier [0x008A8FE3+2467827]
+	GetHandleVerifier [0x008A45E6+2448886]
+	GetHandleVerifier [0x008BF80C+2560028]
+	GetHandleVerifier [0x00673DF5+153093]
+	GetHandleVerifier [0x0067A3BD+179149]
+	GetHandleVerifier [0x00664BB8+91080]
+	GetHandleVerifier [0x00664D60+91504]
+	GetHandleVerifier [0x0064FA10+4640]
+	BaseThreadInitThunk [0x769E5D49+25]
+	RtlInitializeExceptionChain [0x7781CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x7781CE91+561]
+
+2025-04-26 00:45:48,140 - INFO - Found submit button, clicking now
+2025-04-26 00:45:49,607 - INFO - Received confirmation of successful application
+2025-04-26 00:45:49,608 - INFO - Successfully applied to Trainee - AI Content Creation (Short Form) (1/2)
+2025-04-26 00:45:54,672 - INFO - Attempting to apply for RPA UiPath Engineering at NatWest Group
+Actively hiring
+2025-04-26 00:46:01,515 - INFO - Clicking apply button for RPA UiPath Engineering
+2025-04-26 00:46:08,920 - INFO - No 'Proceed to Application' button found, might be already on application form
+2025-04-26 00:46:09,088 - INFO - Application form found
+2025-04-26 00:46:09,158 - INFO - Using 2 generic textareas found on application form
+2025-04-26 00:46:11,194 - WARNING - Could not fill field: Message: element not interactable
+  (Session info: chrome=135.0.7049.115)
+Stacktrace:
+	GetHandleVerifier [0x0065D363+60275]
+	GetHandleVerifier [0x0065D3A4+60340]
+	(No symbol) [0x0049056E]
+	(No symbol) [0x004CFC83]
+	(No symbol) [0x004FD08C]
+	(No symbol) [0x004CDCF4]
+	(No symbol) [0x004FD304]
+	(No symbol) [0x0051E6EB]
+	(No symbol) [0x004FCE86]
+	(No symbol) [0x004CC623]
+	(No symbol) [0x004CD474]
+	GetHandleVerifier [0x008A8FE3+2467827]
+	GetHandleVerifier [0x008A45E6+2448886]
+	GetHandleVerifier [0x008BF80C+2560028]
+	GetHandleVerifier [0x00673DF5+153093]
+	GetHandleVerifier [0x0067A3BD+179149]
+	GetHandleVerifier [0x00664BB8+91080]
+	GetHandleVerifier [0x00664D60+91504]
+	GetHandleVerifier [0x0064FA10+4640]
+	BaseThreadInitThunk [0x769E5D49+25]
+	RtlInitializeExceptionChain [0x7781CF0B+107]
+	RtlGetAppContainerNamedObjectPath [0x7781CE91+561]
+
+2025-04-26 00:46:33,220 - INFO - 127.0.0.1 - - [26/Apr/2025 00:46:33] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:46:33,227 - INFO - 127.0.0.1 - - [26/Apr/2025 00:46:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:47:33,224 - INFO - 127.0.0.1 - - [26/Apr/2025 00:47:33] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:47:33,234 - INFO - 127.0.0.1 - - [26/Apr/2025 00:47:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:47:42,263 - INFO - Filled in application field with response
+2025-04-26 00:47:43,968 - INFO - Found submit button, clicking now
+2025-04-26 00:47:45,279 - INFO - Received confirmation of successful application
+2025-04-26 00:47:45,280 - INFO - Successfully applied to RPA UiPath Engineering (2/2)
+2025-04-26 00:47:48,415 - INFO - Reached maximum application limit of 2
+2025-04-26 00:47:49,054 - INFO - Browser session closed
+2025-04-26 00:48:33,208 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:33] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:33,217 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:33,269 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:36,200 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:36] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:38,205 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:38] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:40,207 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:40] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:40,210 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:40] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:48:42,213 - INFO - 127.0.0.1 - - [26/Apr/2025 00:48:42] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:49:33,211 - INFO - 127.0.0.1 - - [26/Apr/2025 00:49:33] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:49:33,219 - INFO - 127.0.0.1 - - [26/Apr/2025 00:49:33] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:13,121 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:13] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:13,136 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:13] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:13,273 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:13] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:15,266 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:15] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:17,271 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:17] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:19,274 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:19] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:19,281 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:19] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:21,266 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:21] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:23,274 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:23] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:25,278 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:25] "OPTIONS /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:25,289 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:25] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 00:50:27,266 - INFO - 127.0.0.1 - - [26/Apr/2025 00:50:27] "GET /api/status/43df92b0-2a86-4660-992f-9a2d1cc344d4 HTTP/1.1" 200 -
+2025-04-26 09:41:34,172 - INFO - Gemini API initialized successfully
+2025-04-26 09:41:34,192 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-26 09:41:34,194 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-26 09:41:34,255 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.16.12.141:5000
+2025-04-26 09:41:34,256 - INFO - [33mPress CTRL+C to quit[0m
+2025-04-26 10:53:22,662 - INFO - Gemini API initialized successfully
+2025-04-26 10:53:22,768 - INFO - Starting Internshala API server on 0.0.0.0:5000
+2025-04-26 10:53:22,773 - INFO - API now uses credentials provided by users via the frontend form
+2025-04-26 10:53:23,151 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.213.28:5000
+2025-04-26 10:53:23,152 - INFO - [33mPress CTRL+C to quit[0m

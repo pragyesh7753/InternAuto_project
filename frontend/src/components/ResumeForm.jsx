@@ -756,7 +756,7 @@ function ResumeForm({ onClose }) {
                                     required
                                     className="outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15"
                                     type="text"
-                                    placeholder="John Doe"
+                                    placeholder="Enter your Full Name Here"
                                 />
                             </div>
 
@@ -768,7 +768,7 @@ function ResumeForm({ onClose }) {
                                     required
                                     className="outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15"
                                     type="email"
-                                    placeholder="john.doe@example.com"
+                                    placeholder="abc@example.com"
                                 />
                             </div>
 
@@ -780,7 +780,7 @@ function ResumeForm({ onClose }) {
                                     required
                                     className="outline-none bg-white/10 border border-white/30 text-white text-base py-2 px-3 rounded-lg placeholder:text-white/60 focus:bg-white/20 transition-all w-full hover:bg-white/15"
                                     type="tel"
-                                    placeholder="(123) 456-7890"
+                                    placeholder="1234567890"
                                 />
                             </div>
 
