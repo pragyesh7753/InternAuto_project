@@ -19,7 +19,7 @@ function CareerForm({ onClose, showResumeForm }) {
         try {
             // Use the correct API endpoint with the same origin as the API in the api/index.js
             // This ensures consistent CORS behavior across your app
-            const apiUrl = 'https://internauto-project.onrender.com/api/career_suggestion';
+            const apiUrl = 'http://127.0.0.1:5000/api/career_suggestion';
             
             const response = await fetch(apiUrl, {
                 method: 'POST',
