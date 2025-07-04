@@ -3,7 +3,7 @@
  */
 
 // Use environment variable with fallback to production URL
-const API_BASE_URL = 'http://127.0.0.1:5000/api';
+const API_BASE_URL = 'https://internauto-project.onrender.com/api';
 
 // Add a backup API URL for fallback
 const BACKUP_API_URL = 'https://internauto-backup.onrender.com/api';
