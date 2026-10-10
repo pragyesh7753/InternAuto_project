@@ -1,0 +1,24 @@
+# Docker Compose for InternAuto Project
+version: '3.8'
+
+services:
+  internautomation:
+    build: .
+    container_name: internautomation
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - backend/.env
+    volumes:
+      - ./backend/error_screenshots:/app/backend/error_screenshots
+      - ./backend/logs:/app/backend/logs
+    restart: unless-stopped
+    networks:
+      - internautomation-network
+
+networks:
+  internautomation-network:
+    driver: bridge

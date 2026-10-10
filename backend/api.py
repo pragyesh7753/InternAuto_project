@@ -3,7 +3,7 @@ API interface for Internshala Automation.
 Provides endpoints to run the automation from a frontend application.
 """
 
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 import logging
 import threading
@@ -29,7 +29,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
+# Serve static files from the built frontend directory
+frontend_dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend', 'dist'))
+app = Flask(__name__, static_folder=frontend_dist_path, static_url_path='/')
 # Enable CORS for all routes to allow requests from the React frontend
 # Update to explicitly allow frontend origin
 CORS(app, origins=["https://internauto.pragyesh.in", "http://localhost:5173", "http://localhost:4173"], supports_credentials=True)
@@ -161,6 +163,15 @@ def start_automation():
         'message': 'Automation started',
         'job_id': job_id
     })
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    """Serve the React frontend and static files"""
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/api/status/<job_id>', methods=['GET'])
 def get_job_status(job_id):

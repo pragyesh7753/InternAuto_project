@@ -1,0 +1,54 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Dependencies
+node_modules
+__pycache__
+*.pyc
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist
+build
+*.egg-info
+
+# Logs
+*.log
+logs
+npm-debug.log*
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Documentation
+*.md
+docs
+
+# Test files
+test
+tests
+coverage
+.pytest_cache
+
+# Other
+.cache
+temp
+tmp
